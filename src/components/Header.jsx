@@ -1,47 +1,79 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeadset } from '@fortawesome/free-solid-svg-icons'
+import React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeadset } from "@fortawesome/free-solid-svg-icons";
+import logo from "../images/logo.png";
+
+const Links = ({ className, to, content }) => {
+  return (
+    <li>
+      <Link to={to} className={className}>
+        {content}
+      </Link>
+    </li>
+  );
+};
 
 const Header = () => {
-    return (
-        <div>
-            <section id='header-first-section' className='w-screen bg-white'>
-                <div className='flex flex-row w-3/4 mx-auto'>
-                    <section>
-                        <Link to="/">
-                            <img src="" alt="logo" id='logo' />
-                            <h1>wimple</h1>
-                            <p>auto <br />transport</p>
-                        </Link>
-                    </section>
-                    <section>
-                        <nav>
-                            <ul>
-                                <li><Link to="/aboutus">About Us</Link></li>
-                                <li><Link to="/whywimple">Why Wimple?</Link></li>
-                                <li><Link to="/solutions">Solutions</Link></li>
-                            </ul>
-                        </nav>
-                    </section>
-                    <section>
-                        <a href="">(888) 491-7162</a>
-                        <FontAwesomeIcon icon={faHeadset} />
-                    </section>
+  return (
+    <header>
+      <section id="header-first-section" className="w-screen bg-white">
+        <div className="flex flex-row justify-between items-center w-70 mx-auto h-16">
+          <div className="flex items-center justify-between w-6/12">
+            <section>
+              <Link
+                to="/"
+                className="flex font-varela items-center font-normal text-sm"
+              >
+                <img
+                  src={logo}
+                  alt="logo"
+                  id="logo"
+                  className="max-w-12 max-h-12"
+                />
+                <h1 className="text-4xl font-bold ml-1">wimple</h1>
+                <div className="ml-1">
+                  <p className="relative top-1">auto</p>
+                  <p className="relative bottom-1">transport</p>
                 </div>
+              </Link>
             </section>
-            <section id='header-second-section' className='w-screen bg-red-700'>
-                <div className='w-3/4 mx-auto'>
-                    <div>
-                        <Link to="/comparequotes">Compare Quotes</Link>
-                        <Link to="/helpcenter">Help Center</Link>
-                        <Link to="/trackshipment">Track a Shipment</Link>
-                        <Link to="/calculator">Calculator</Link>
-                    </div>
-                </div>
+            <section className="mr-8">
+              <nav>
+                <ul className="flex text-lg">
+                  <Links to="/aboutus" className="mr-8" content="About Us" />
+                  <Links
+                    to="/whywimple"
+                    className="mr-8"
+                    content="Why Wimple?"
+                  />
+                  <Links to="/solutions" className="mr-8" content="Solutions" />
+                </ul>
+              </nav>
             </section>
+          </div>
+          <section className="mr-6 text-lg">
+            <a className="mr-2" href="">
+              (888) 491-7162
+            </a>
+            <FontAwesomeIcon icon={faHeadset} size="xl" />
+          </section>
         </div>
-    );
-}
+      </section>
+      <section id="header-second-section" className="w-screen bg-[#b3002d]">
+        <div className="w-70 mx-auto h-12 flex items-center">
+          <nav className="w-5/12">
+            <ul className="text-white text-lg w-full flex justify-between">
+              <Links to="/comparequotes" content="Compare Quotes" />
+              <Links to="/helpcenter" content="Help Center" />
+              <Links to="/trackshipment" content="Track a Shipment" />
+              <Links to="/calculator" content="Calculator" />
+            </ul>
+          </nav>
+        </div>
+      </section>
+    </header>
+  );
+};
 
 export default Header;

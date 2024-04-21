@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        @apply font-openSans font-semibold;
-    }
+  body {
+    @apply font-openSans font-semibold;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }

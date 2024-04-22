@@ -51,4 +51,12 @@
   #header-second-section {
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.4);
   }
+
+  #review-first-section::before {
+    content: url(./icons/star-solid.svg);
+    display: inline-block;
+    width: 3rem;
+    height: auto;
+    margin-right: 0.4rem;
+  }
 }

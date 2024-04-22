@@ -11,6 +11,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
   }
 
   .f-center {
@@ -22,5 +23,14 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+  }
+
+  #scrollToTopBtn {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  #scrollToTopBtn.show {
+    opacity: 1;
   }
 }

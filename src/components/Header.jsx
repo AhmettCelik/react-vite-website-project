@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadset } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import logo from "../images/logo.png";
+import BackToTopBtn from "./BackToTopBtn";
 
 const Links = ({ className, to, content }) => {
   return (
@@ -16,20 +17,6 @@ const Links = ({ className, to, content }) => {
 };
 
 const Header = () => {
-  const [isAtTop, setIsAtTop] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsAtTop(window.pageYOffset === 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isAtTop]);
-
   return (
     <header>
       <section
@@ -71,16 +58,7 @@ const Header = () => {
             </section>
           </div>
           <div className="flex items-center justify-between w-[23%]">
-            <section>
-              {!isAtTop && (
-                <button
-                  id="scrollToTopBtn"
-                  className="bg-[#b3002d] text-white py-2 px-4 rounded"
-                >
-                  Get a Quote
-                </button>
-              )}
-            </section>
+            <BackToTopBtn />
             <section className="mr-6 text-lg">
               <a className="mr-2" href="">
                 (888) 491-7162

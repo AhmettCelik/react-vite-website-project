@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
         </section>
         <div className="h-6px">
-          <hr className="opacity-20 bg-slate-400 h-[2px] w-full" />
+          <hr className="opacity-20 bg-white h-[2px] w-full" />
         </div>
         <section className="flex w-full h-auto">
           <div className="flex ft-center basis-2/4 h-20 font-normal opacity-35">

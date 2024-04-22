@@ -25,6 +25,16 @@
     text-align: center;
   }
 
+  .custom-home-first-section {
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7),
+        rgba(36, 36, 36, 0.5),
+        rgba(0, 0, 0, 0.7)
+      ),
+      url("https://wimplesolutions.s3.us-west-1.amazonaws.com/images/background.png");
+  }
+
   #scrollToTopBtn {
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -32,5 +42,13 @@
 
   #scrollToTopBtn.show {
     opacity: 1;
+  }
+
+  #header-first-section {
+    box-shadow: 0px 1px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  #header-second-section {
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.4);
   }
 }

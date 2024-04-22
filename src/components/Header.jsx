@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadset } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import logo from "../images/logo.png";
-import BackToTopBtn from "./BackToTopBtn";
+import BackToTopBtn from "./HeaderBackToTopBtn";
 
 const Links = ({ className, to, content }) => {
   return (

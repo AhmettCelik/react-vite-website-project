@@ -17,7 +17,10 @@ const Links = ({ className, to, content }) => {
 const Header = () => {
   return (
     <header>
-      <section id="header-first-section" className="w-full bg-white">
+      <section
+        id="header-first-section"
+        className="w-full bg-white fixed z-50 top-0"
+      >
         <div className="flex flex-row justify-between items-center w-70 mx-auto h-16">
           <div className="flex items-center justify-between w-6/12">
             <section>
@@ -60,7 +63,10 @@ const Header = () => {
           </section>
         </div>
       </section>
-      <section id="header-second-section" className="w-full bg-[#b3002d]">
+      <section
+        id="header-second-section"
+        className="w-full bg-[#b3002d] z-10 relative top-16"
+      >
         <div className="w-70 mx-auto h-12 flex items-center">
           <nav className="w-5/12">
             <ul className="text-white text-lg w-full flex justify-between">

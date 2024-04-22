@@ -18,8 +18,8 @@ const FooterH4 = (props) => {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#dbdbdb] h-[406px] w-full bottom-0">
-      <div className="w-3/6 h-full mx-auto">
+    <footer className="bg-[#dbdbdb] h-auto w-full bottom-0">
+      <div className="w-3/6 h-full flex flex-col justify-between mx-auto">
         <section className="flex items-end w-full h-[304px]">
           <div className="flex justify-between items-start w-full h-3/4">
             <div>
@@ -32,7 +32,7 @@ const Footer = () => {
             <div>
               <FooterH4 content="Support" />
               <Anchor href="/helpcenter" content="Help Center" />
-              <Anchor href="trackshipment" content="Track a Shipment" />
+              <Anchor href="/trackshipment" content="Track a Shipment" />
             </div>
             <div>
               <FooterH4 content="Wimple Auto Transport" />
@@ -50,51 +50,33 @@ const Footer = () => {
           </div>
         </section>
         <div className="h-6px">
-          <hr className="mb-[1px] opacity-60" />
-          <hr />
+          <hr className="opacity-20 bg-slate-400 h-[2px] w-full" />
         </div>
-        <section className="flex justify-between items-center w-full h-[76px]">
-          <div className="h-full flex items-center w-[44%] ml-3 font-normal opacity-50">
-            <p className="flex justify-center flex-wrap relative top-3">
-              <span className="opacity-60">
-                Copyright © 2024 <span className="invisible">.</span>
-              </span>
-              <a
-                href="https://wimplesolutions.com/"
-                className=" mb-4 opacity-60"
-              >
-                by Wimple Auto Transport
-              </a>{" "}
-              <span className="opacity-60">. All Rights</span>
-              <span className="relative bottom-[17px] opacity-60">
-                Reserved.
-              </span>
+        <section className="flex w-full h-auto">
+          <div className="flex ft-center basis-2/4 h-20 font-normal opacity-35">
+            <p>
+              Copyright © 2024 <a href="/"> by Wimple Auto Transport</a>. All
+              Rights Reserved.
             </p>
           </div>
-          <div className="h-full justify-center font-normal flex w-[27%] relative top-5 left-5 opacity-50">
-            <a href="https://wimplesolutions.com/" className="opacity-60">
-              Privacy Policy
-            </a>
-            <span className="opacity-60">|</span>
-            <a
-              href="/termsandconditions"
-              className="flex flex-wrap h-full w-[50%] opacity-60"
-            >
-              <span>Terms & </span>
-              <span className="relative bottom-4 right-16">Conditions</span>
-            </a>
+          <div className="flex ft-center basis-1/4 h-20 font-normal opacity-35">
+            <p>
+              <a href="/">Privacy Policy</a>
+              <span> | </span>
+              <a href="/termsandconditions">Terms & Conditions</a>
+            </p>
           </div>
-          <div className="flex items-center relative right-6">
+          <div className="flex f-center basis-1/4 h-20">
             <img
               src={fmcsaLogo}
               alt="federal motor carrier safety administration logo"
-              className="max-w-12 max-h-12 relative right-5"
+              className="w-auto h-11"
             />
             <a href="https://www.bbb.org/us/tx/dallas/profile/freight-broker/wimple-llc-0875-91341115/customer-reviews">
               <img
                 src={bbbLogo}
                 alt="better business bureau logo"
-                className="max-w-32 max-h-32"
+                className="w-auto h-14 ml-5"
               />
             </a>
           </div>

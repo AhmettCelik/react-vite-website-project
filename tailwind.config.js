@@ -15,6 +15,8 @@ export default {
       colors: {
         "dark-grey-rgba": "rgba(36, 36, 36, 0.54)",
         "light-grey-rgba": "rgba(117, 117, 117, 0.54)",
+        "for-opacity-black": "rgba(0, 0, 0, 0.2)",
+        "for-opacity-white": "rgba(255, 255, 255, 0.2)",
       },
     },
   },

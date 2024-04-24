@@ -1,9 +1,14 @@
 import React from "react";
 import Reviews from "../components/Reviews";
+import Slides from "../components/Slides";
+import doorToDoor from "../images/doortodoorservice.png";
+import orderTracking from "../images/ordertracking.png";
+import customerService from "../images/customerservice.png";
+import payment from "../images/payment.png";
 
 const Home = () => {
   return (
-    <div className="h-screen w-full">
+    <div className="h-auto w-full">
       <section className="custom-home-first-section bg-blend-overlay bg-cover bg-center w-full h-[85%]">
         <div className="flex flex-col justify-end h-full w-4/6 mx-auto">
           <div className="w-full h-[59%] flex">
@@ -20,8 +25,8 @@ const Home = () => {
                 </h3>
               </div>
             </section>
-            <section className="flex items-center justify-end w-5/12 h-full bg-slate-500">
-              <div className="w-8/12 h-4/6 bg-white"></div>
+            <section className="flex items-center justify-end w-6/12 h-full">
+              <div className="w-8/12 h-4/6 bg-white rounded-md"></div>
             </section>
           </div>
           <div className="w-full h-2/6">
@@ -49,6 +54,32 @@ const Home = () => {
                 id="review-third-section"
               />
             </section>
+          </div>
+        </div>
+      </section>
+      <section className="container">
+        <div className="slider-wrapper">
+          <div className="slider">
+            <Slides
+              id="slide-1"
+              alt="door-to-door service foto"
+              src={doorToDoor}
+            />
+            <Slides
+              id="slide-2"
+              alt="order tracking foto"
+              src={orderTracking}
+            />
+            <Slides
+              id="slide-3"
+              alt="customer service foto"
+              src={customerService}
+            />
+            <Slides
+              id="slide-4"
+              alt="zero upfront payment foto"
+              src={payment}
+            />
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import React from "react";
 import Reviews from "../components/Reviews";
-import Slides from "../components/Slides";
+import SlideCard, { SliderNav } from "../components/SlideCards";
 import doorToDoor from "../images/doortodoorservice.png";
 import orderTracking from "../images/ordertracking.png";
 import customerService from "../images/customerservice.png";
@@ -9,7 +9,7 @@ import payment from "../images/payment.png";
 const Home = () => {
   return (
     <div className="h-auto w-full">
-      <section className="custom-home-first-section bg-blend-overlay bg-cover bg-center w-full h-[85%]">
+      <section className="custom-home-first-section bg-blend-overlay bg-cover bg-center w-full h-[85vh]">
         <div className="flex flex-col justify-end h-full w-4/6 mx-auto">
           <div className="w-full h-[59%] flex">
             <section className="flex flex-col justify-center w-7/12 h-full">
@@ -57,29 +57,35 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="container">
-        <div className="slider-wrapper">
-          <div className="slider">
-            <Slides
+      <section className="p-8">
+        <div className="relative max-w-3xl my-0 mx-auto">
+          <div className="slider flex aspect-video overflow-x-auto snap-x snap-mandatory scroll-smooth rounded-lg">
+            <SlideCard
               id="slide-1"
               alt="door-to-door service foto"
               src={doorToDoor}
             />
-            <Slides
+            <SlideCard
               id="slide-2"
               alt="order tracking foto"
               src={orderTracking}
             />
-            <Slides
+            <SlideCard
               id="slide-3"
               alt="customer service foto"
               src={customerService}
             />
-            <Slides
+            <SlideCard
               id="slide-4"
               alt="zero upfront payment foto"
               src={payment}
             />
+          </div>
+          <div className="slider-nav flex gap-x-4 absolute bottom-5 left-1/2 translate-x-[-50%] z-10">
+            <SliderNav href="#slide-1" />
+            <SliderNav href="#slide-2" />
+            <SliderNav href="#slide-3" />
+            <SliderNav href="#slide-4" />
           </div>
         </div>
       </section>

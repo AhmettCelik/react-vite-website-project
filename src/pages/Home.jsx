@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Reviews from "../components/Reviews";
 import doorToDoor from "../images/doortodoorservice.png";
 import orderTracking from "../images/ordertracking.png";
 import customerService from "../images/customerservice.png";
 import payment from "../images/payment.png";
-import SlideCard, { SlideButton } from "../components/SlideCards";
+import SlideCard, { SlideButtons } from "../components/SlideCards";
 
 const Home = () => {
+  const ref = useRef();
+  const margins = ["0", "-25%", "-50%", "-75%"];
+  const delay = 4000;
+  const [firstSlide, setFirstSlide] = useState();
+  const [index, setIndex] = useState(0);
+  const currentMargin = margins[index];
+
+  useEffect(() => {
+    setFirstSlide(ref.current);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(
+      () =>
+        setIndex((prevIndex) =>
+          prevIndex === margins.length - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="h-auto w-full">
       <section className="custom-home-first-section bg-blend-overlay bg-cover bg-center w-full h-[85vh]">
@@ -60,15 +83,23 @@ const Home = () => {
       <section className="flex flex-col f-center">
         <div className="slider w-[45%] rounded-xl overflow-hidden">
           <div className="slides flex w-[400%]">
-            <SlideCard
-              src={doorToDoor}
-              alt="door to door service foto"
-              h1="Door-to-door Service"
-              p="Our company offers a comprehensive door-to-door service to our
+            <div
+              id="first"
+              ref={ref}
+              className="basis-1/4 slide"
+              style={{ marginLeft: `${currentMargin}` }}
+            >
+              <img src={doorToDoor} alt="door to door service foto" />
+              <div className="w-[80%] mx-auto h-auto text-center">
+                <h1 className="text-2xl font-bold p-3">Door-to-door Service</h1>
+                <p className="mb-4 font-normal text-lg">
+                  Our company offers a comprehensive door-to-door service to our
                   valued customers. You can expect your vehicle to arrive at
                   your doorstep, fully prepared and ready to go, without any
                   additional effort required."
-            />
+                </p>
+              </div>
+            </div>
             <SlideCard
               src={orderTracking}
               alt="order tracking foto"
@@ -95,12 +126,7 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className="w-20 h-8 flex justify-between items-center">
-          <SlideButton />
-          <SlideButton />
-          <SlideButton />
-          <SlideButton />
-        </div>
+        <SlideButtons firstSlide={firstSlide} />
       </section>
     </div>
   );

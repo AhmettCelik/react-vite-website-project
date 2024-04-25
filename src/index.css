@@ -34,6 +34,14 @@
       url("https://wimplesolutions.s3.us-west-1.amazonaws.com/images/background.png");
   }
 
+  .manuel-btn {
+    transition: 1s;
+  }
+
+  .slide {
+    transition: ease 1000ms;
+  }
+
   .slider {
     box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
   }

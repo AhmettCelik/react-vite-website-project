@@ -12,6 +12,15 @@ export default {
         70: "74%",
       },
 
+      height: {
+        104: "26rem",
+        112: "28rem",
+        120: "30rem",
+        128: "32rem",
+        132: "33rem",
+        136: "34rem",
+      },
+
       colors: {
         "dark-grey-rgba": "rgba(36, 36, 36, 0.54)",
         "light-grey-rgba": "rgba(117, 117, 117, 0.54)",

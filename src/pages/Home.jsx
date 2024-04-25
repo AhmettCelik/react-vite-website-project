@@ -4,7 +4,9 @@ import doorToDoor from "../images/doortodoorservice.png";
 import orderTracking from "../images/ordertracking.png";
 import customerService from "../images/customerservice.png";
 import payment from "../images/payment.png";
+import mapFoto from "../images/map.png";
 import SlideCard, { SlideButtons } from "../components/SlideCards";
+import Questions from "../components/Faqs";
 
 const Home = () => {
   const ref = useRef();
@@ -31,7 +33,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="h-auto w-full">
+    <div className="h-auto w-full bg-[#ededed]">
       <section className="custom-home-first-section bg-blend-overlay bg-cover bg-center w-full h-[85vh]">
         <div className="flex flex-col justify-end h-full w-4/6 mx-auto">
           <div className="w-full h-[59%] flex">
@@ -104,14 +106,14 @@ const Home = () => {
               src={orderTracking}
               alt="order tracking foto"
               h1="Order Tracking"
-              p="Track your vehicle step-by-step. We give our customers real-time
+              paragraph="Track your vehicle step-by-step. We give our customers real-time
                 updates on their vehicle's status and delivery."
             />
             <SlideCard
               src={customerService}
               alt="customer service foto"
               h1="24/7 Customer Service"
-              p="We offer 24/7 customer support. Our team is available to help
+              paragraph="We offer 24/7 customer support. Our team is available to help
                 with any questions or issues you have via phone, email, or live
                 chat. We pride ourselves on providing personalized and reliable
                 support to ensure your satisfaction."
@@ -120,7 +122,7 @@ const Home = () => {
               src={payment}
               alt="payment foto"
               h1="Payment"
-              p="Booking a vehicle with zero upfront payment is now more secure
+              paragraph="Booking a vehicle with zero upfront payment is now more secure
                 and easy. You will only be charged when your vehicle is picked
                 up."
             />
@@ -132,6 +134,37 @@ const Home = () => {
           timeDelay={delay}
         />
       </section>
+      <section className="w-full h-auto flex f-center">
+        <div className="w-4/6 h-auto flex flex-col ft-center">
+          <h1 className="text-4xl font-bold">
+            Vehicle Transportation Nationwide
+          </h1>
+          <img src={mapFoto} alt="map foto" className="my-12 w-auto h-128" />
+          <p className="font-normal text-lg mb-32">
+            At Wimple, we believe in transparency to empower your decisions. Our
+            transportation costs are designed with your business in mind—clear,
+            competitive, and tailored to your unique needs.{" "}
+            <span className="font-bold">No hidden fees, no surprises.</span>{" "}
+            Explore the simplicity of efficient logistics with us. Your success,
+            our commitment.
+          </p>
+        </div>
+      </section>
+      <section className="mt-32 mb-32 w-full h-auto">
+        <Questions />
+        <p className="text-center mt-20">
+          Don't see your question above?{" "}
+          <a href="" className="underline text-blue-400">
+            Chat with us
+          </a>{" "}
+          or check out{" "}
+          <a href="" className="underline text-blue-400">
+            Help Center
+          </a>
+          .
+        </p>
+      </section>
+      <p className="h-0 overflow-hidden">By Eniac</p>
     </div>
   );
 };

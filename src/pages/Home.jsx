@@ -80,7 +80,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col f-center mt-32">
+      <section className="flex flex-col f-center mt-32 mb-32">
         <div className="slider w-[45%] rounded-xl border-2 border-slate-400 overflow-hidden">
           <div className="slides flex w-[400%]">
             <div

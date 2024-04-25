@@ -1,24 +1,22 @@
 import React from "react";
 
-function SlideCards({ id, src, alt }) {
+const SlideCard = ({ src, alt, h1, p }) => {
   return (
-    <img
-      id={id}
-      src={src}
-      alt={alt}
-      className="flex-[1 0 100%] snap-start object-cover"
-    />
+    <div className="basis-1/4">
+      <img src={src} alt={alt} />
+      <div className="w-[80%] mx-auto h-auto text-center">
+        <h1 className="text-2xl font-bold p-3">{h1}</h1>
+        <p className="mb-4 font-normal text-lg">{p}</p>
+      </div>
+    </div>
   );
-}
+};
 
-function SliderNav({ href }) {
+const SlideButton = () => {
   return (
-    <a
-      href={href}
-      className="slider-nav_a w-2 h-2 rounded-[50%] opacity-75 bg-white hover:opacity-100"
-    ></a>
+    <button className="w-2 h-2 border-2 border-solid border-slate-500 rounded-[50%] duration-[1s]"></button>
   );
-}
+};
 
-export { SliderNav };
-export default SlideCards;
+export { SlideButton };
+export default SlideCard;

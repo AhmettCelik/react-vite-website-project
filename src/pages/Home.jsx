@@ -1,10 +1,10 @@
 import React from "react";
 import Reviews from "../components/Reviews";
-import SlideCard, { SliderNav } from "../components/SlideCards";
 import doorToDoor from "../images/doortodoorservice.png";
 import orderTracking from "../images/ordertracking.png";
 import customerService from "../images/customerservice.png";
 import payment from "../images/payment.png";
+import SlideCard, { SlideButton } from "../components/SlideCards";
 
 const Home = () => {
   return (
@@ -57,36 +57,49 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="p-8">
-        <div className="relative max-w-3xl my-0 mx-auto">
-          <div className="slider flex aspect-video overflow-x-auto snap-x snap-mandatory scroll-smooth rounded-lg">
+      <section className="flex flex-col f-center">
+        <div className="slider w-[45%] rounded-xl overflow-hidden">
+          <div className="slides flex w-[400%]">
             <SlideCard
-              id="slide-1"
-              alt="door-to-door service foto"
               src={doorToDoor}
+              alt="door to door service foto"
+              h1="Door-to-door Service"
+              p="Our company offers a comprehensive door-to-door service to our
+                  valued customers. You can expect your vehicle to arrive at
+                  your doorstep, fully prepared and ready to go, without any
+                  additional effort required."
             />
             <SlideCard
-              id="slide-2"
-              alt="order tracking foto"
               src={orderTracking}
+              alt="order tracking foto"
+              h1="Order Tracking"
+              p="Track your vehicle step-by-step. We give our customers real-time
+                updates on their vehicle's status and delivery."
             />
             <SlideCard
-              id="slide-3"
-              alt="customer service foto"
               src={customerService}
+              alt="customer service foto"
+              h1="24/7 Customer Service"
+              p="We offer 24/7 customer support. Our team is available to help
+                with any questions or issues you have via phone, email, or live
+                chat. We pride ourselves on providing personalized and reliable
+                support to ensure your satisfaction."
             />
             <SlideCard
-              id="slide-4"
-              alt="zero upfront payment foto"
               src={payment}
+              alt="payment foto"
+              h1="Payment"
+              p="Booking a vehicle with zero upfront payment is now more secure
+                and easy. You will only be charged when your vehicle is picked
+                up."
             />
           </div>
-          <div className="slider-nav flex gap-x-4 absolute bottom-5 left-1/2 translate-x-[-50%] z-10">
-            <SliderNav href="#slide-1" />
-            <SliderNav href="#slide-2" />
-            <SliderNav href="#slide-3" />
-            <SliderNav href="#slide-4" />
-          </div>
+        </div>
+        <div className="w-20 h-8 flex justify-between items-center">
+          <SlideButton />
+          <SlideButton />
+          <SlideButton />
+          <SlideButton />
         </div>
       </section>
     </div>

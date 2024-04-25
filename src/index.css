@@ -34,10 +34,6 @@
       url("https://wimplesolutions.s3.us-west-1.amazonaws.com/images/background.png");
   }
 
-  .manuel-btn {
-    transition: 1s;
-  }
-
   .slide {
     transition: ease 1000ms;
   }
@@ -48,6 +44,12 @@
 
   .slider-nav_a {
     transition: opacity ease 250ms;
+  }
+
+  #active-button {
+    opacity: 100%;
+    background-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
   }
 
   #scrollToTopBtn {

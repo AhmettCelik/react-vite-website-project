@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const SlideCard = ({ src, alt, h1, p }) => {
   return (
@@ -12,29 +12,48 @@ const SlideCard = ({ src, alt, h1, p }) => {
   );
 };
 
-const SlideButtons = ({ firstSlide }) => {
-  const handleClick = (margin) => {
-    firstSlide.classList.remove("ml-0", "ml-[-25%]", "ml-[-50%]", "ml-[-75%]");
-    firstSlide.classList.add(margin);
+const SlideButtons = ({ index, setMarginIndex, delay }) => {
+  const handleClick = (marginIndex) => {
+    setMarginIndex(marginIndex);
   };
 
   return (
     <div className="w-20 h-8 flex justify-between items-center">
       <button
-        onClick={() => handleClick("ml-0")}
-        className="w-2 h-2 bg-slate-700 rounded-[50%] opacity-60 manuel-btn"
+        id="0"
+        onClick={() => {
+          handleClick("0");
+          setTimeout(() => setMarginIndex(0), delay);
+        }}
+        className={`w-2 h-2 bg-slate-700 rounded-[50%] opacity-60 manuel-btn`}
+        style={{ opacity: index === 0 ? "1" : "0.6" }}
       ></button>
       <button
-        onClick={() => handleClick("ml-[-25%]")}
-        className="w-2 h-2 bg-slate-700 rounded-[50%] opacity-60 manuel-btn"
+        id="1"
+        onClick={() => {
+          handleClick("1");
+          setTimeout(() => setMarginIndex(1), delay);
+        }}
+        className={`w-2 h-2 bg-slate-700 rounded-[50%] opacity-60 manuel-btn`}
+        style={{ opacity: index === 1 ? "1" : "0.6" }}
       ></button>
       <button
-        onClick={() => handleClick("ml-[-50%]")}
-        className="w-2 h-2 bg-slate-700 rounded-[50%] opacity-60 manuel-btn"
+        id="2"
+        onClick={() => {
+          handleClick("2");
+          setTimeout(() => setMarginIndex(2), delay);
+        }}
+        className={`w-2 h-2 bg-slate-700 rounded-[50%] opacity-60 manuel-btn`}
+        style={{ opacity: index === 2 ? "1" : "0.6" }}
       ></button>
       <button
-        onClick={() => handleClick("ml-[-75%]")}
-        className="w-2 h-2 bg-slate-700 rounded-[50%] opacity-60 manuel-btn"
+        id="3"
+        onClick={() => {
+          handleClick("3");
+          setTimeout(() => setMarginIndex(3), delay);
+        }}
+        className={`w-2 h-2 bg-slate-700 rounded-[50%] opacity-60 manuel-btn`}
+        style={{ opacity: index === 3 ? "1" : "0.6" }}
       ></button>
     </div>
   );

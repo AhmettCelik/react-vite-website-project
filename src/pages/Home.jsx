@@ -9,7 +9,7 @@ import SlideCard, { SlideButtons } from "../components/SlideCards";
 const Home = () => {
   const ref = useRef();
   const margins = ["0", "-25%", "-50%", "-75%"];
-  const delay = 4000;
+  const delay = 7000;
   const [firstSlide, setFirstSlide] = useState();
   const [index, setIndex] = useState(0);
   const currentMargin = margins[index];
@@ -126,7 +126,11 @@ const Home = () => {
             />
           </div>
         </div>
-        <SlideButtons firstSlide={firstSlide} />
+        <SlideButtons
+          index={index}
+          setMarginIndex={setIndex}
+          timeDelay={delay}
+        />
       </section>
     </div>
   );

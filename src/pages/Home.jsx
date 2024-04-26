@@ -7,6 +7,8 @@ import payment from "../images/payment.png";
 import mapFoto from "../images/map.png";
 import SlideCard, { SlideButtons } from "../components/SlideCards";
 import Questions from "../components/Faqs";
+import BackToTopBtn from "../components/BackToTopBtn";
+import Stepper from "../components/Stepper";
 
 const Home = () => {
   const ref = useRef();
@@ -50,8 +52,10 @@ const Home = () => {
                 </h3>
               </div>
             </section>
-            <section className="flex items-center justify-end w-6/12 h-full">
-              <div className="w-8/12 h-4/6 bg-white rounded-md"></div>
+            <section className="flex items-center justify-end w-6/12 h-full bg-slate-400">
+              <div className="w-8/12 h-4/6 bg-white rounded-md">
+                <Stepper />
+              </div>
             </section>
           </div>
           <div className="w-full h-2/6">
@@ -150,7 +154,7 @@ const Home = () => {
           </p>
         </div>
       </section>
-      <section className="mt-32 mb-32 w-full h-auto">
+      <section className="mt-32 mb-28 w-full h-auto">
         <Questions />
         <p className="text-center mt-20">
           Don't see your question above?{" "}
@@ -163,6 +167,17 @@ const Home = () => {
           </a>
           .
         </p>
+      </section>
+      <section className="w-full mb-32">
+        <div className="w-full text-center">
+          <h1 className="font-bold text-4xl mb-8">
+            Get your discounted qutoe now!
+          </h1>
+          <BackToTopBtn
+            padding={{ paddingY: "0.5rem", paddingX: "3rem" }}
+            textSize="text-2xl"
+          />
+        </div>
       </section>
       <p className="h-0 overflow-hidden">By Eniac</p>
     </div>

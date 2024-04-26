@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadset } from "@fortawesome/free-solid-svg-icons";
 import logo from "../images/logo.png";
-import BackToTopBtn from "./HeaderBackToTopBtn";
+import BackToTopBtn from "./BackToTopBtn";
 
 const Links = ({ className, to, content }) => {
   return (
@@ -57,7 +57,7 @@ const Header = () => {
             </section>
           </div>
           <div className="flex items-center justify-between w-[23%]">
-            <BackToTopBtn />
+            <BackToTopBtn padding={{ paddingY: "0.5rem", paddingX: "1rem" }} />
             <section className="mr-6 text-lg">
               <a className="mr-2" href="">
                 (888) 491-7162

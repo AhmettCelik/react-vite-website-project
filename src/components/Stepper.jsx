@@ -57,6 +57,10 @@ const StepperContinueBtn = ({ widthOfContinue }) => {
   );
 };
 
+const StepperBackBtn = () => {
+  return <div></div>;
+};
+
 const StepperFirstStep = () => {
   return (
     <div className="w-full h-full flex flex-col justify-evenly text-center items-center">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const FormElement = ({ formElementContent }) => {
   return (
@@ -20,50 +21,28 @@ const FormElement = ({ formElementContent }) => {
   );
 };
 
-const StepperStepCircles = ({ formStepContent, setColor, setColorText }) => {
-  const [bgColor, setBgColor] = useState(setColor);
-  const [textColor, setTextColor] = useState(setColorText);
+const StepperStep = ({
+  display,
+  backgroundColor,
+  textColor,
+  lineColor,
+  content,
+  count,
+}) => {
+  const handleClick = () => {
+    count > content && (count = content);
+  };
 
   return (
-    <div className={`bg-[${bgColor}] w-7 h-7 rounded-full flex ft-center`}>
-      <p className={`font-normal text-${textColor}`}>{formStepContent}</p>
-    </div>
-  );
-};
-
-const StepperStep = (props) => {
-  return (
-    <div className="w-full h-8 flex justify-center items-center">
-      <StepperStepCircles
-        formStepContent="1"
-        setColor={props.firstBgColor}
-        setColorText={props.firstTextColor}
-      />
-      <div className="bg-slate-200 h-1 w-12"></div>
-      <StepperStepCircles
-        formStepContent="2"
-        setColor={props.secondBgColor}
-        setColorText={props.secondTextColor}
-      />
-      <div className="bg-slate-200 h-1 w-12"></div>
-      <StepperStepCircles
-        formStepContent="3"
-        setColor="#ededed"
-        setColorText="slate-400"
-      />
-      <div className="bg-slate-200 h-1 w-12"></div>
-      <StepperStepCircles
-        formStepContent="4"
-        setColor="#ededed"
-        setColorText="slate-400"
-      />
-      <div className="bg-slate-200 h-1 w-12"></div>
-      <StepperStepCircles
-        formStepContent="5"
-        setColor="#ededed"
-        setColorText="slate-400"
-      />
-    </div>
+    <section className="flex ft-center">
+      <div
+        onClick={handleClick}
+        className={`bg-${backgroundColor} w-7 h-7 rounded-full flex ft-center cursor-pointer`}
+      >
+        <p className={`font-normal text-${textColor}`}>{content}</p>
+      </div>
+      <div className={`bg-${lineColor} h-1 w-9 ${display}`}></div>
+    </section>
   );
 };
 
@@ -107,7 +86,7 @@ const SubSection = (props) => {
   );
 };
 
-const Step_1 = ({ display }) => {
+const Step_1 = ({ display, count }) => {
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
@@ -116,7 +95,49 @@ const Step_1 = ({ display }) => {
         Get an <strong>instant</strong> & <strong>free quote</strong> or call
         (888) 491-7162
       </p>
-      <StepperStep firstBgColor="#b3002d" firstTextColor="white" />
+      <div className="h-8 flex justify-center items-center">
+        <button className="mr-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
+        </button>
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"slate-200"}
+          content={1}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          lineColor={"slate-200"}
+          content={2}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          lineColor={"slate-200"}
+          content={3}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          lineColor={"slate-200"}
+          content={4}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          content={5}
+          display="hidden"
+        />
+        <button className="ml-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
+        </button>
+      </div>
       <form className="form w-10/12 mt-2 flex flex-col gap-4">
         <FormElement formElementContent="From (ZIP or City)" />
         <FormElement formElementContent="To (ZIP or City)" />
@@ -125,13 +146,246 @@ const Step_1 = ({ display }) => {
   );
 };
 
-const Step_2 = ({ display }) => {
+const Step_2 = ({ display, count }) => {
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
-      <p>Information</p>
-      <StepperStep />
+      <p className="font-normal text-[0.95rem]">
+        Get an <strong>instant</strong> & <strong>free quote</strong> or call
+        (888) 491-7162
+      </p>
+      <div className="w-full h-8 flex justify-center items-center">
+        <button className="mr-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
+        </button>
+
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={1}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"slate-200"}
+          content={2}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          lineColor={"slate-200"}
+          content={3}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          lineColor={"slate-200"}
+          content={4}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          content={5}
+          display="hidden"
+        />
+        <button className="ml-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
+        </button>
+      </div>
+      <form className="form w-10/12 mt-2 flex flex-col gap-4">
+        <FormElement formElementContent="From (ZIP or City)" />
+        <FormElement formElementContent="To (ZIP or City)" />
+      </form>
+    </div>
+  );
+};
+
+const Step_3 = ({ display, count }) => {
+  return (
+    <div
+      className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
+    >
+      <p className="font-normal text-[0.95rem]">
+        Get an <strong>instant</strong> & <strong>free quote</strong> or call
+        (888) 491-7162
+      </p>
+      <div className="w-full h-8 flex justify-center items-center">
+        <button className="mr-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
+        </button>
+
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={1}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={2}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"slate-200"}
+          content={3}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          lineColor={"slate-200"}
+          content={4}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          content={5}
+          display="hidden"
+        />
+        <button className="ml-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
+        </button>
+      </div>
+      <form className="form w-10/12 mt-2 flex flex-col gap-4">
+        <FormElement formElementContent="From (ZIP or City)" />
+        <FormElement formElementContent="To (ZIP or City)" />
+      </form>
+    </div>
+  );
+};
+
+const Step_4 = ({ display, count }) => {
+  return (
+    <div
+      className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
+    >
+      <p className="font-normal text-[0.95rem]">
+        Get an <strong>instant</strong> & <strong>free quote</strong> or call
+        (888) 491-7162
+      </p>
+      <div className="w-full h-8 flex justify-center items-center">
+        <button className="mr-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
+        </button>
+
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={1}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={2}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={3}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"slate-200"}
+          content={4}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          content={5}
+          display="hidden"
+        />
+        <button className="ml-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
+        </button>
+      </div>
+      <form className="form w-10/12 mt-2 flex flex-col gap-4">
+        <FormElement formElementContent="From (ZIP or City)" />
+        <FormElement formElementContent="To (ZIP or City)" />
+      </form>
+    </div>
+  );
+};
+
+const Step_5 = ({ display, count }) => {
+  return (
+    <div
+      className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
+    >
+      <p className="font-normal text-[0.95rem]">
+        Get an <strong>instant</strong> & <strong>free quote</strong> or call
+        (888) 491-7162
+      </p>
+      <div className="w-full h-8 flex justify-center items-center">
+        <button className="mr-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
+        </button>
+
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={1}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={2}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={3}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={4}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          content={5}
+          display="hidden"
+        />
+        <button className="ml-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
+        </button>
+      </div>
+      <form className="form w-10/12 mt-2 flex flex-col gap-4">
+        <FormElement formElementContent="From (ZIP or City)" />
+        <FormElement formElementContent="To (ZIP or City)" />
+      </form>
     </div>
   );
 };
@@ -156,8 +410,11 @@ const Stepper = () => {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly">
-      <Step_1 display={count === 1 ? "flex" : "hidden"} />
-      <Step_2 display={count === 2 ? "flex" : "hidden"} />
+      <Step_1 display={count === 1 ? "flex" : "hidden"} count={count} />
+      <Step_2 display={count === 2 ? "flex" : "hidden"} count={count} />
+      <Step_3 display={count === 3 ? "flex" : "hidden"} count={count} />
+      <Step_4 display={count === 4 ? "flex" : "hidden"} count={count} />
+      <Step_5 display={count === 5 ? "flex" : "hidden"} count={count} />
       <div className="w-full flex f-center gap-4">
         <StepperBackBtn
           display={count > 1 ? "inline-block" : "hidden"}

@@ -24,7 +24,7 @@ const FormElement = ({ formElementContent }) => {
 const FormElementButtons = ({ content }) => {
   return (
     <div>
-      <button className="p-2 h-10 w-full outline-none border-[0.1rem] rounded border-solid border-[#b3002d] focus:bg-[#b3002d] focus:text-white">
+      <button className="p-2 h-10 w-full outline-none border-[0.1rem] rounded-lg border-solid border-[#b3002d] focus:bg-[#b3002d] focus:text-white duration-[0.2s]">
         {content}
       </button>
     </div>
@@ -96,6 +96,72 @@ const SubSection = (props) => {
   );
 };
 
+const StepperSteps = (
+  count,
+  increment,
+  decrement,
+  color_1,
+  color_2,
+  color_3,
+  color_4,
+  color_5,
+  color_6,
+  color_7,
+  color_8,
+  color_9,
+  color_10,
+  color_11,
+  color_12,
+  color_13,
+  color_14
+) => {
+  return (
+    <div className="h-8 flex justify-center items-center">
+      <button onClick={() => decrement} className="mr-4">
+        <FontAwesomeIcon icon={faCaretDown} rotation={90} />
+      </button>
+      <StepperStep
+        count={count}
+        backgroundColor={color_1}
+        textColor={color_2}
+        lineColor={color_3}
+        content={1}
+      />
+      <StepperStep
+        count={count}
+        backgroundColor={color_4}
+        textColor={color_5}
+        lineColor={color_6}
+        content={2}
+      />
+      <StepperStep
+        count={count}
+        backgroundColor={color_7}
+        textColor={color_8}
+        lineColor={color_9}
+        content={3}
+      />
+      <StepperStep
+        count={count}
+        backgroundColor={color_10}
+        textColor={color_11}
+        lineColor={color_12}
+        content={4}
+      />
+      <StepperStep
+        count={count}
+        backgroundColor={color_13}
+        textColor={color_14}
+        content={5}
+        display="hidden"
+      />
+      <button onClick={() => increment} className="ml-4">
+        <FontAwesomeIcon icon={faCaretDown} rotation={270} />
+      </button>
+    </div>
+  );
+};
+
 const Step_1 = ({ display, count, increment, decrement }) => {
   return (
     <div
@@ -105,6 +171,27 @@ const Step_1 = ({ display, count, increment, decrement }) => {
         Get an <strong>instant</strong> & <strong>free quote</strong> or call
         (888) 491-7162
       </p>
+      <StepperSteps
+        count={count}
+        increment={increment}
+        decrement={decrement}
+        color_1="[#b3002d]"
+        color_2="white"
+        color_3="slite-200"
+        color_4="[#ededed]"
+        color_5="slate-400"
+        color_6="slate-200"
+        color_7="[#ededed]"
+        color_8="slate-400"
+        color_9="slate-200"
+        color_10="[#ededed]"
+        color_11="slate-400"
+        color_12="slate-200"
+        color_13="[#ededed]"
+        color_14="slate-400"
+      />
+      {/*
+      <StepperSteps count={count} increment={increment} decrement={decrement} color_1={""} color_2={""} color_3={""} color_4={""} color_5={""} color_6={""} color_7={""} color_8={""} color_9={""} color_10={""} color_11={""} color_12={""} color_13={""} color_14={""} />
       <div className="h-8 flex justify-center items-center">
         <button onClick={decrement} className="mr-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={90} />
@@ -148,6 +235,7 @@ const Step_1 = ({ display, count, increment, decrement }) => {
           <FontAwesomeIcon icon={faCaretDown} rotation={270} />
         </button>
       </div>
+        */}
       <form className="form w-10/12 mt-2 flex flex-col gap-4">
         <FormElement formElementContent="From (ZIP or City)" />
         <FormElement formElementContent="To (ZIP or City)" />
@@ -206,10 +294,10 @@ const Step_2 = ({ display, count, increment, decrement }) => {
           <FontAwesomeIcon icon={faCaretDown} rotation={270} />
         </button>
       </div>
-      <form className="form w-10/12 mt-2 flex flex-col gap-4">
+      <section className="form w-10/12 mt-2 flex flex-col gap-4">
         <FormElementButtons content={"Open"} />
         <FormElementButtons content={"Enclosed"} />
-      </form>
+      </section>
     </div>
   );
 };

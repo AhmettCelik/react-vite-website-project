@@ -21,6 +21,16 @@ const FormElement = ({ formElementContent }) => {
   );
 };
 
+const FormElementButtons = ({ content }) => {
+  return (
+    <div>
+      <button className="p-2 h-10 w-full outline-none border-[0.1rem] rounded border-solid border-[#b3002d] focus:bg-[#b3002d] focus:text-white">
+        {content}
+      </button>
+    </div>
+  );
+};
+
 const StepperStep = ({
   display,
   backgroundColor,
@@ -86,7 +96,7 @@ const SubSection = (props) => {
   );
 };
 
-const Step_1 = ({ display, count }) => {
+const Step_1 = ({ display, count, increment, decrement }) => {
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
@@ -96,7 +106,7 @@ const Step_1 = ({ display, count }) => {
         (888) 491-7162
       </p>
       <div className="h-8 flex justify-center items-center">
-        <button className="mr-4">
+        <button onClick={decrement} className="mr-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={90} />
         </button>
         <StepperStep
@@ -134,7 +144,7 @@ const Step_1 = ({ display, count }) => {
           content={5}
           display="hidden"
         />
-        <button className="ml-4">
+        <button onClick={increment} className="ml-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={270} />
         </button>
       </div>
@@ -146,17 +156,14 @@ const Step_1 = ({ display, count }) => {
   );
 };
 
-const Step_2 = ({ display, count }) => {
+const Step_2 = ({ display, count, increment, decrement }) => {
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
-      <p className="font-normal text-[0.95rem]">
-        Get an <strong>instant</strong> & <strong>free quote</strong> or call
-        (888) 491-7162
-      </p>
+      <p className="text-[0.95rem]">Transport Type</p>
       <div className="w-full h-8 flex justify-center items-center">
-        <button className="mr-4">
+        <button onClick={decrement} className="mr-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={90} />
         </button>
 
@@ -195,7 +202,68 @@ const Step_2 = ({ display, count }) => {
           content={5}
           display="hidden"
         />
-        <button className="ml-4">
+        <button onClick={increment} className="ml-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
+        </button>
+      </div>
+      <form className="form w-10/12 mt-2 flex flex-col gap-4">
+        <FormElementButtons content={"Open"} />
+        <FormElementButtons content={"Enclosed"} />
+      </form>
+    </div>
+  );
+};
+
+const Step_3 = ({ display, count, increment, decrement }) => {
+  return (
+    <div
+      className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
+    >
+      <p className="font-normal text-[0.95rem]">
+        Get an <strong>instant</strong> & <strong>free quote</strong> or call
+        (888) 491-7162
+      </p>
+      <div className="w-full h-8 flex justify-center items-center">
+        <button onClick={decrement} className="mr-4">
+          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
+        </button>
+
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={1}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"[#b3002d]"}
+          content={2}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
+          lineColor={"slate-200"}
+          content={3}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          lineColor={"slate-200"}
+          content={4}
+        />
+        <StepperStep
+          count={count}
+          backgroundColor={"[#ededed]"}
+          textColor={"slate-400"}
+          content={5}
+          display="hidden"
+        />
+        <button onClick={increment} className="ml-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={270} />
         </button>
       </div>
@@ -207,7 +275,7 @@ const Step_2 = ({ display, count }) => {
   );
 };
 
-const Step_3 = ({ display, count }) => {
+const Step_4 = ({ display, count, increment, decrement }) => {
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
@@ -217,7 +285,7 @@ const Step_3 = ({ display, count }) => {
         (888) 491-7162
       </p>
       <div className="w-full h-8 flex justify-center items-center">
-        <button className="mr-4">
+        <button onClick={decrement} className="mr-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={90} />
         </button>
 
@@ -239,13 +307,13 @@ const Step_3 = ({ display, count }) => {
           count={count}
           backgroundColor={"[#b3002d]"}
           textColor={"white"}
-          lineColor={"slate-200"}
+          lineColor={"[#b3002d]"}
           content={3}
         />
         <StepperStep
           count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
+          backgroundColor={"[#b3002d]"}
+          textColor={"white"}
           lineColor={"slate-200"}
           content={4}
         />
@@ -256,7 +324,7 @@ const Step_3 = ({ display, count }) => {
           content={5}
           display="hidden"
         />
-        <button className="ml-4">
+        <button onClick={increment} className="ml-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={270} />
         </button>
       </div>
@@ -268,7 +336,7 @@ const Step_3 = ({ display, count }) => {
   );
 };
 
-const Step_4 = ({ display, count }) => {
+const Step_5 = ({ display, count, increment, decrement }) => {
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
@@ -278,68 +346,7 @@ const Step_4 = ({ display, count }) => {
         (888) 491-7162
       </p>
       <div className="w-full h-8 flex justify-center items-center">
-        <button className="mr-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
-        </button>
-
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={1}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={2}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={3}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"slate-200"}
-          content={4}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
-          content={5}
-          display="hidden"
-        />
-        <button className="ml-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
-        </button>
-      </div>
-      <form className="form w-10/12 mt-2 flex flex-col gap-4">
-        <FormElement formElementContent="From (ZIP or City)" />
-        <FormElement formElementContent="To (ZIP or City)" />
-      </form>
-    </div>
-  );
-};
-
-const Step_5 = ({ display, count }) => {
-  return (
-    <div
-      className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
-    >
-      <p className="font-normal text-[0.95rem]">
-        Get an <strong>instant</strong> & <strong>free quote</strong> or call
-        (888) 491-7162
-      </p>
-      <div className="w-full h-8 flex justify-center items-center">
-        <button className="mr-4">
+        <button onClick={decrement} className="mr-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={90} />
         </button>
 
@@ -378,7 +385,7 @@ const Step_5 = ({ display, count }) => {
           content={5}
           display="hidden"
         />
-        <button className="ml-4">
+        <button onClick={increment} className="ml-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={270} />
         </button>
       </div>
@@ -401,20 +408,45 @@ const Stepper = () => {
   const subSectionFifthParagraphSecondContent = " and acknowledge ";
 
   const increment = () => {
-    setCount(count + 1);
+    count < 5 && setCount(count + 1);
   };
 
   const decrement = () => {
-    setCount(count - 1);
+    count > 1 && setCount(count - 1);
   };
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly">
-      <Step_1 display={count === 1 ? "flex" : "hidden"} count={count} />
-      <Step_2 display={count === 2 ? "flex" : "hidden"} count={count} />
-      <Step_3 display={count === 3 ? "flex" : "hidden"} count={count} />
-      <Step_4 display={count === 4 ? "flex" : "hidden"} count={count} />
-      <Step_5 display={count === 5 ? "flex" : "hidden"} count={count} />
+      <Step_1
+        increment={increment}
+        decrement={decrement}
+        display={count === 1 ? "flex" : "hidden"}
+        count={count}
+      />
+      <Step_2
+        increment={increment}
+        decrement={decrement}
+        display={count === 2 ? "flex" : "hidden"}
+        count={count}
+      />
+      <Step_3
+        increment={increment}
+        decrement={decrement}
+        display={count === 3 ? "flex" : "hidden"}
+        count={count}
+      />
+      <Step_4
+        increment={increment}
+        decrement={decrement}
+        display={count === 4 ? "flex" : "hidden"}
+        count={count}
+      />
+      <Step_5
+        increment={increment}
+        decrement={decrement}
+        display={count === 5 ? "flex" : "hidden"}
+        count={count}
+      />
       <div className="w-full flex f-center gap-4">
         <StepperBackBtn
           display={count > 1 ? "inline-block" : "hidden"}

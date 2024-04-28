@@ -11,11 +11,13 @@ import Calculator from "./pages/Calculator";
 import NotFound from "./pages/NotFound";
 import TermsConditions from "./pages/TermsConditions";
 import Footer from "./components/Footer";
+import ChatUs from "./components/ChatUs";
 
 function App() {
   return (
     <div>
       <Header />
+      <ChatUs />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<About />} />

@@ -31,6 +31,24 @@ const FormElementButtons = ({ content }) => {
   );
 };
 
+const YearOptions = () => {
+  const options = [];
+  for (let year = 2024; year >= 1896; year--) {
+    options.push(
+      <option key={year} value={year}>
+        {year}
+      </option>
+    );
+  }
+
+  return (
+    <select className="p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500">
+      <option value="">Year</option>
+      {options}
+    </select>
+  );
+};
+
 const StepperStep = ({
   display,
   backgroundColor,
@@ -81,7 +99,7 @@ const StepperBackBtn = ({ display, onClickFunctionProp }) => {
 
 const SubSection = (props) => {
   return (
-    <div className={`w-full flex ft-center h-3/12 ${props.display}`}>
+    <div className={`w-full flex ft-center h-3/12 mb-4 ${props.display}`}>
       <p className="font-normal text-center text-sm w-11/12">
         {props.paragraphContent}
         <a className={`${props.firstAnchorStyle}`} href={props.firstHref}>
@@ -101,12 +119,12 @@ const Step_1 = ({ display, count, increment, decrement }) => {
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
-      <p className="font-normal text-[0.95rem]">
+      <p className="font-normal text-[0.95rem] mt-4">
         Get an <strong>instant</strong> & <strong>free quote</strong> or call
         (888) 491-7162
       </p>
 
-      <div className="h-8 flex justify-center items-center">
+      <div className="h-8 flex justify-center items-center my-3">
         <button onClick={decrement} className="mr-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={90} />
         </button>
@@ -163,8 +181,8 @@ const Step_2 = ({ display, count, increment, decrement }) => {
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
-      <p className="text-[0.95rem]">Transport Type</p>
-      <div className="w-full h-8 flex justify-center items-center">
+      <p className="text-[0.95rem] mt-3">Transport Type</p>
+      <div className="w-full h-8 flex justify-center items-center my-3">
         <button onClick={decrement} className="mr-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={90} />
         </button>
@@ -221,11 +239,8 @@ const Step_3 = ({ display, count, increment, decrement }) => {
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
-      <p className="font-normal text-[0.95rem]">
-        Get an <strong>instant</strong> & <strong>free quote</strong> or call
-        (888) 491-7162
-      </p>
-      <div className="w-full h-8 flex justify-center items-center">
+      <p className="font-normal text-[0.95rem] mt-4">Vehicle</p>
+      <div className="w-full h-8 flex justify-center items-center my-4">
         <button onClick={decrement} className="mr-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={90} />
         </button>
@@ -269,9 +284,22 @@ const Step_3 = ({ display, count, increment, decrement }) => {
           <FontAwesomeIcon icon={faCaretDown} rotation={270} />
         </button>
       </div>
-      <form className="form w-10/12 mt-2 flex flex-col gap-4">
-        <FormElement formElementContent="From (ZIP or City)" />
-        <FormElement formElementContent="To (ZIP or City)" />
+      <form className="w-10/12 h-full flex flex-col gap-1">
+        <YearOptions />
+        <select
+          name="make"
+          id="make"
+          className="p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500"
+        >
+          <option value="make">Make</option>
+        </select>
+        <select
+          name="model"
+          id="model"
+          className="p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500"
+        >
+          <option value="Model">Model</option>
+        </select>
       </form>
     </div>
   );
@@ -282,11 +310,11 @@ const Step_4 = ({ display, count, increment, decrement }) => {
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
-      <p className="font-normal text-[0.95rem]">
+      <p className="font-normal text-[0.95rem] mt-4">
         Get an <strong>instant</strong> & <strong>free quote</strong> or call
         (888) 491-7162
       </p>
-      <div className="w-full h-8 flex justify-center items-center">
+      <div className="w-full h-8 flex justify-center items-center my-3">
         <button onClick={decrement} className="mr-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={90} />
         </button>
@@ -330,10 +358,6 @@ const Step_4 = ({ display, count, increment, decrement }) => {
           <FontAwesomeIcon icon={faCaretDown} rotation={270} />
         </button>
       </div>
-      <form className="form w-10/12 mt-2 flex flex-col gap-4">
-        <FormElement formElementContent="From (ZIP or City)" />
-        <FormElement formElementContent="To (ZIP or City)" />
-      </form>
     </div>
   );
 };
@@ -343,11 +367,11 @@ const Step_5 = ({ display, count, increment, decrement }) => {
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
-      <p className="font-normal text-[0.95rem]">
+      <p className="font-normal text-[0.95rem] mt-4">
         Get an <strong>instant</strong> & <strong>free quote</strong> or call
         (888) 491-7162
       </p>
-      <div className="w-full h-8 flex justify-center items-center">
+      <div className="w-full h-8 flex justify-center items-center my-3">
         <button onClick={decrement} className="mr-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={90} />
         </button>
@@ -391,10 +415,6 @@ const Step_5 = ({ display, count, increment, decrement }) => {
           <FontAwesomeIcon icon={faCaretDown} rotation={270} />
         </button>
       </div>
-      <form className="form w-10/12 mt-2 flex flex-col gap-4">
-        <FormElement formElementContent="From (ZIP or City)" />
-        <FormElement formElementContent="To (ZIP or City)" />
-      </form>
     </div>
   );
 };
@@ -418,7 +438,7 @@ const Stepper = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-evenly">
+    <div className="w-full h-auto flex flex-col items-center justify-evenly">
       <Step_1
         increment={increment}
         decrement={decrement}
@@ -449,7 +469,7 @@ const Stepper = () => {
         display={count === 5 ? "flex" : "hidden"}
         count={count}
       />
-      <div className="w-full flex f-center gap-4">
+      <div className="w-full flex f-center gap-4 my-4 ">
         <StepperBackBtn
           display={count > 1 ? "inline-block" : "hidden"}
           onClickFunctionProp={decrement}

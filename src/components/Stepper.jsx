@@ -106,25 +106,6 @@ const Step_1 = ({ display, count, increment, decrement }) => {
         (888) 491-7162
       </p>
 
-      <StepperSteps
-        count={count}
-        increment={increment}
-        decrement={decrement}
-        color_1={""}
-        color_2={""}
-        color_3={""}
-        color_4={""}
-        color_5={""}
-        color_6={""}
-        color_7={""}
-        color_8={""}
-        color_9={""}
-        color_10={""}
-        color_11={""}
-        color_12={""}
-        color_13={""}
-        color_14={""}
-      />
       <div className="h-8 flex justify-center items-center">
         <button onClick={decrement} className="mr-4">
           <FontAwesomeIcon icon={faCaretDown} rotation={90} />

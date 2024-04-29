@@ -38,6 +38,23 @@
     box-shadow: 0 3px 25px 1px #7d7d7d;
   }
 
+  .custom-chat-us-first-section {
+    border-radius: 0.75rem 0.75rem 0 0;
+  }
+
+  .custom-chat-us-second-section {
+    border-radius: 0 0 0.75rem 0.75rem;
+  }
+
+  .for-custom-scroll-bar::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+
+  .for-custom-scroll-bar::-webkit-scrollbar-thumb {
+    background-color: #7e848c;
+    border-radius: 1rem;
+  }
+
   .slide {
     transition: ease 1000ms;
   }

@@ -163,12 +163,12 @@ const Step_1 = ({ display, count, increment, decrement }) => {
           content={5}
           display="hidden"
         />
-        <button onClick={increment} className="ml-4">
+        <button onClick={increment} className="ml-4 z-[-1]">
           <FontAwesomeIcon icon={faCaretDown} rotation={270} />
         </button>
       </div>
 
-      <form className="form w-10/12 mt-2 flex flex-col gap-4">
+      <form className="form w-10/12 mt-2 flex z-[-1] flex-col gap-4">
         <FormElement formElementContent="From (ZIP or City)" />
         <FormElement formElementContent="To (ZIP or City)" />
       </form>

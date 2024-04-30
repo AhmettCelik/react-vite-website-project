@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logo from "../images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComments } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +10,8 @@ import { faMicrophone } from "@fortawesome/free-solid-svg-icons";
 
 const Attachments = () => {
   const [emotesDisplay, setEmotesDisplay] = useState("hidden");
+  const mediaRecorder = useRef(null);
+  const chunks = useRef([]);
 
   const handleEmoteButtonClick = () => {
     emotesDisplay === "hidden"
@@ -19,6 +21,28 @@ const Attachments = () => {
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
+  };
+
+  const toggleRecording = () => {
+    if (!mediaRecorder.current) {
+      navigator.mediaDevices
+        .getUserMedia({ audio: true })
+        .then((stream) => {
+          mediaRecorder.current = new MediaRecorder(stream);
+          mediaRecorder.current.ondataavailable = (e) => {
+            chunks.current.push(e.data);
+          };
+          mediaRecorder.current.start();
+        })
+        .catch((err) => console.error("Error:", err));
+    } else {
+      mediaRecorder.current.stop();
+      mediaRecorder.current.stream.getTracks().forEach((track) => track.stop());
+      const blob = new Blob(chunks.current, { type: "audio/wav" });
+      console.log("Kaydedilen ses:", blob);
+      chunks.current = [];
+      mediaRecorder.current = null;
+    }
   };
 
   return (
@@ -51,7 +75,7 @@ const Attachments = () => {
             onChange={handleFileInputChange}
           />
         </label>
-        <button>
+        <button onClick={toggleRecording}>
           <FontAwesomeIcon icon={faMicrophone} />
         </button>
       </div>

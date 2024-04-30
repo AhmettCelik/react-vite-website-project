@@ -17,6 +17,10 @@ const Attachments = () => {
       : setEmotesDisplay("hidden");
   };
 
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+  };
+
   return (
     <div className="w-6/12">
       <div className="font-normal text-[0.73rem] flex gap-2 relative">
@@ -37,9 +41,16 @@ const Attachments = () => {
         <button onClick={handleEmoteButtonClick}>
           <FontAwesomeIcon icon={faFaceGrin} />
         </button>
-        <button>
+        <label htmlFor="file-input" className="cursor-pointer">
           <FontAwesomeIcon icon={faPaperclip} />
-        </button>
+          <input
+            id="file-input"
+            type="file"
+            accept="image/*, video/*, audio/*"
+            className="hidden"
+            onChange={handleFileInputChange}
+          />
+        </label>
         <button>
           <FontAwesomeIcon icon={faMicrophone} />
         </button>

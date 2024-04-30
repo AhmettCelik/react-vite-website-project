@@ -8,6 +8,46 @@ import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
 import { faFaceGrin } from "@fortawesome/free-solid-svg-icons";
 import { faMicrophone } from "@fortawesome/free-solid-svg-icons";
 
+const Attachments = () => {
+  const [emotesDisplay, setEmotesDisplay] = useState("hidden");
+
+  const handleEmoteButtonClick = () => {
+    emotesDisplay === "hidden"
+      ? setEmotesDisplay("block")
+      : setEmotesDisplay("hidden");
+  };
+
+  return (
+    <div className="w-6/12">
+      <div className="font-normal text-[0.73rem] flex gap-2 relative">
+        <div className={`absolute top-[-1.2rem] left-[-1.3rem] hidden`}>
+          <p>Add Emote</p>
+        </div>
+        <div className={`absolute top-[-1.2rem] left-[0.7rem] hidden`}>
+          <p>Add File</p>
+        </div>
+        <div className={`absolute top-[-1.2rem] left-[2rem] hidden`}>
+          <p>voice message</p>
+        </div>
+      </div>
+      <div
+        className={`bg-white w-11/12 h-48 absolute top-[-9rem] right-4 shadow-[1px_1px_20px_1px_rgba(0,0,0,0.3)] rounded-xl ${emotesDisplay}`}
+      ></div>
+      <div className="flex gap-3 opacity-40">
+        <button onClick={handleEmoteButtonClick}>
+          <FontAwesomeIcon icon={faFaceGrin} />
+        </button>
+        <button>
+          <FontAwesomeIcon icon={faPaperclip} />
+        </button>
+        <button>
+          <FontAwesomeIcon icon={faMicrophone} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const Message = ({ text, sender }) => {
   return (
     <div className="flex flex-col w-auto h-auto items-end mb-2 mt-3 mr-3">
@@ -78,19 +118,9 @@ const MessageForm = ({ onSend }) => {
           <FontAwesomeIcon icon={faPaperPlane} />
         </button>
       </section>
-      <section className="flex justify-around opacity-40">
-        <div className="flex w-6/12 gap-3">
-          <button className="">
-            <FontAwesomeIcon icon={faFaceGrin} />
-          </button>
-          <button>
-            <FontAwesomeIcon icon={faPaperclip} />
-          </button>
-          <button>
-            <FontAwesomeIcon icon={faMicrophone} />
-          </button>
-        </div>
-        <div>
+      <section className="flex justify-around">
+        <Attachments />
+        <div className="opacity-40">
           <a
             href="https://crisp.chat/tr/livechat/?ref=chatbox&domain=wimplesolutions.com&name=Wimple%20Auto%20Transport"
             className="font-normal text-[0.7rem]"

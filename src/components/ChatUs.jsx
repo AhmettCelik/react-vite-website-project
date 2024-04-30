@@ -3,24 +3,31 @@ import logo from "../images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faMessage } from "@fortawesome/free-solid-svg-icons";
+import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
+import { faFaceGrin } from "@fortawesome/free-solid-svg-icons";
+import { faMicrophone } from "@fortawesome/free-solid-svg-icons";
 
 const Message = ({ text, sender }) => {
   return (
-    <div
-      className={`${
-        sender == "customer"
-          ? "bg-[#ba0000] right-[-7rem] top-3"
-          : "bg-gray-100"
-      } rounded-lg px-2 py-1 h-auto w-auto max-w-[70%] relative mb-2 z-10
-      `}
-    >
-      <p
+    <div className="flex flex-col w-auto h-auto items-end mb-2 mt-3 mr-3">
+      <div
         className={`${
-          sender == "customer" ? "text-white" : "text-white"
-        } w-auto h-auto`}
+          sender == "customer"
+            ? "bg-[#ba0000] right-[-7rem] top-3"
+            : "bg-gray-100"
+        } rounded-lg px-2 py-2 h-auto w-auto max-w-[60%] z-10 font-normal text-sm flex flex-wrap
+      `}
+        style={{ wordWrap: "break-word", wordBreak: "break-word" }}
       >
-        {text}
-      </p>
+        <p
+          className={`${
+            sender == "customer" ? "text-white" : "text-white"
+          } w-auto h-auto`}
+        >
+          {text}
+        </p>
+      </div>
     </div>
   );
 };
@@ -51,24 +58,54 @@ const MessageForm = ({ onSend }) => {
   };
 
   return (
-    <div className="w-full flex justify-evenly item-center mt-3">
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => {
-          setMessage(e.target.value);
-          handleDisplayButton(e.target.value);
-        }}
-        onKeyDown={handleKeyDown}
-        placeholder="Enter your message..."
-        className="font-normal text-sm w-9/12 bg-transparent outline-none"
-      />
-      <button
-        onClick={handleMessageSend}
-        className={`bg-[#ba0000] text-white py-2 px-3 rounded-xl ${display}`}
-      >
-        <FontAwesomeIcon icon={faPaperPlane} />
-      </button>
+    <div className="w-full h-auto flex flex-col gap-4">
+      <section className="w-full flex justify-evenly item-center mt-2">
+        <input
+          type="text"
+          value={message}
+          onChange={(e) => {
+            setMessage(e.target.value);
+            handleDisplayButton(e.target.value);
+          }}
+          onKeyDown={handleKeyDown}
+          placeholder="Enter your message..."
+          className="font-normal text-sm w-9/12 bg-transparent outline-none"
+        />
+        <button
+          onClick={handleMessageSend}
+          className={`bg-[#ba0000] text-white py-2 px-3 rounded-xl ${display}`}
+        >
+          <FontAwesomeIcon icon={faPaperPlane} />
+        </button>
+      </section>
+      <section className="flex justify-around opacity-40">
+        <div className="flex w-6/12 gap-3">
+          <button className="">
+            <FontAwesomeIcon icon={faFaceGrin} />
+          </button>
+          <button>
+            <FontAwesomeIcon icon={faPaperclip} />
+          </button>
+          <button>
+            <FontAwesomeIcon icon={faMicrophone} />
+          </button>
+        </div>
+        <div>
+          <a
+            href="https://crisp.chat/tr/livechat/?ref=chatbox&domain=wimplesolutions.com&name=Wimple%20Auto%20Transport"
+            className="font-normal text-[0.7rem]"
+          >
+            <span className="mr-1">We run on </span>
+            <span>
+              <FontAwesomeIcon
+                icon={faMessage}
+                style={{ transform: "rotate(-7deg)" }}
+              />
+            </span>
+            <strong className="text-[0.8rem]"> crisp</strong>
+          </a>
+        </div>
+      </section>
     </div>
   );
 };
@@ -108,17 +145,17 @@ const ChatUsBox = ({ display }) => {
           Last seen section
         </p>
       </section>
-      <section className="custom-chat-us-second-section w-full h-[79%] bg-slate-400">
+      <section className="custom-chat-us-second-section w-full h-[79%]">
         <div
           id="chat-box"
-          className="for-custom-scroll-bar bg-slate-500 w-full h-[82%] relative overflow-y-auto"
+          className="for-custom-scroll-bar w-full h-[82%] relative overflow-y-auto"
         >
           {messages.map((message, index) => (
             <Message key={index} text={message.text} sender={message.sender} />
           ))}
         </div>
-        <div className="custom-chat-us-second-section bg-slate-600 w-full h-[18%] flex flex-col items-center relative z-20">
-          <hr className="w-[95%] border-slate-400" />
+        <div className="custom-chat-us-second-section w-full h-[18%] flex flex-col items-center relative z-20">
+          <hr className="w-[95%] border-slate-300" />
           <MessageForm onSend={handleMessageSend} />
         </div>
       </section>

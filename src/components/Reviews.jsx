@@ -14,4 +14,9 @@ const Reviews = ({ h2, p, id }) => {
   );
 };
 
+const CommentReviews = () => {
+  return <div className="bg-white max-w-[22%] basis-1/4 h-full"></div>;
+};
+
+export { CommentReviews };
 export default Reviews;

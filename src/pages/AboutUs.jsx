@@ -30,11 +30,11 @@ const AboutUs = () => {
         </h1>
       </section>
       <section className="w-full h-auto flex justify-center mt-24 mb-24">
-        <div className="w-[67%] h-auto flex justify-end relative">
+        <div className="w-[67%] flex justify-end relative">
           <div>
-            <div className="custom-about-us-photo bg-cover w-[26%] h-[93%] absolute left-[0.3rem] top-8 z-30"></div>
-            <div className="w-[26.9%] h-[96%] bg-black absolute left-0 top-[1.7rem] rounded z-20"></div>
-            <div className="w-[26.9%] h-[96%] bg-pink-600 absolute left-0 top-[1.7rem] rounded rotate-[-17deg] z-10"></div>
+            <div className="custom-about-us-photo bg-cover w-[26%] h-[93%] max-h-80 absolute left-[-1.7rem] top-8 z-30"></div>
+            <div className="w-[26.9%] h-[96%] max-h-80 bg-black absolute left-[-2rem] top-[1.7rem] rounded z-20"></div>
+            <div className="w-[26.9%] h-[96%] max-h-80 bg-pink-600 absolute left-[-2rem] top-[1.7rem] rounded rotate-[-17deg] z-10"></div>
           </div>
 
           <div className="w-[70%]">

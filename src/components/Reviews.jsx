@@ -4,16 +4,45 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import googleFoto from "../images/googlefoto.png";
 import elfsightLogo from "../images/elfsight.png";
 
-const Reviews = ({ h2, p, id }) => {
+const ReviewsPattern = ({ h2, p, id, textColor }) => {
   return (
-    <section className="w-[24%] text-center flex flex-col justify-center text-white">
+    <section
+      className={`w-[24%] text-center flex flex-col justify-center ${textColor}`}
+    >
       <div className="flex justify-center mb-2">
         {/*<img src={src} alt={alt} className="w-auto h-12 mr-2" />*/}
         <h2 id={id} className="font-bold text-5xl">
           {h2}
         </h2>
       </div>
-      <p>{p}</p>
+      <p className="font-normal">{p}</p>
+    </section>
+  );
+};
+
+const Reviews = ({ textColor }) => {
+  return (
+    <section className="flex justify-evenly h-4/6">
+      <ReviewsPattern
+        h2="5.00"
+        p="Our service has received top ratings from hundred of satisfied
+                  customers."
+        id="review-first-section"
+        textColor={textColor}
+      />
+      <ReviewsPattern
+        h2={"#1"}
+        p="The service provided by Wimple is considered the best in the
+                  Industry."
+        id="review-second-section"
+        textColor={textColor}
+      />
+      <ReviewsPattern
+        h2={"99%"}
+        p="Customers are satisfied with fine service."
+        id="review-third-section"
+        textColor={textColor}
+      />
     </section>
   );
 };
@@ -26,11 +55,17 @@ const CommentReviewsPattern = ({
   readmMoreDisplay,
 }) => {
   const [paragraphHighState, setParagraphHighState] = useState(paragraphHigh);
+  const [readMoreButtonContent, setReadMoreButtonContent] =
+    useState("Read more");
 
   const handleReadMoreButtonClick = () => {
     paragraphHighState != "h-full"
       ? setParagraphHighState("h-full")
       : setParagraphHighState("h-[4.5rem]");
+
+    readMoreButtonContent != "Read more"
+      ? setReadMoreButtonContent("Read more")
+      : setReadMoreButtonContent("Hide");
   };
 
   return (
@@ -58,7 +93,7 @@ const CommentReviewsPattern = ({
             className={`hover:underline font-normal text-sm text-slate-400 ${readmMoreDisplay}`}
             onClick={handleReadMoreButtonClick}
           >
-            Read more
+            {readMoreButtonContent}
           </button>
         </div>
         <div>

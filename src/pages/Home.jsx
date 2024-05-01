@@ -58,25 +58,7 @@ const Home = () => {
                 Trusted by Customers from All Over Country
               </h1>
             </div>
-            <section className="flex justify-evenly h-4/6">
-              <Reviews
-                h2="5.00"
-                p="Our service has received top ratings from hundred of satisfied
-                  customers."
-                id="review-first-section"
-              />
-              <Reviews
-                h2={"#1"}
-                p="The service provided by Wimple is considered the best in the
-                  Industry."
-                id="review-second-section"
-              />
-              <Reviews
-                h2={"99%"}
-                p="Customers are satisfied with fine service."
-                id="review-third-section"
-              />
-            </section>
+            <Reviews textColor="text-white" />
           </div>
         </div>
       </section>

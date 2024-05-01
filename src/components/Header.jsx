@@ -56,8 +56,10 @@ const Header = () => {
               </nav>
             </section>
           </div>
-          <div className="flex items-center justify-between w-[23%]">
+          <section className="ml-40">
             <BackToTopBtn padding={{ paddingY: "0.5rem", paddingX: "1rem" }} />
+          </section>
+          <div className="flex items-center justify-between w-[23%]">
             <section className="mr-6 text-lg">
               <a className="mr-2" href="">
                 (888) 491-7162

@@ -34,6 +34,14 @@
       url("https://wimplesolutions.s3.us-west-1.amazonaws.com/images/background.png");
   }
 
+  .custom-about-first-section {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  }
+
+  .custom-about-us-photo {
+    background-image: url(./images/aboutusfirst.png);
+  }
+
   .custom-chat-us {
     box-shadow: 0 3px 25px 1px #7d7d7d;
   }

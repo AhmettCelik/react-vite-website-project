@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Reviews, { CommentReviews } from "../components/Reviews";
+import Reviews, { CommentReviewsSection } from "../components/Reviews";
 import doorToDoor from "../images/doortodoorservice.png";
 import orderTracking from "../images/ordertracking.png";
 import customerService from "../images/customerservice.png";
@@ -9,7 +9,6 @@ import SlideCard, { SlideButtons } from "../components/SlideCards";
 import Questions from "../components/Faqs";
 import BackToTopBtn from "../components/BackToTopBtn";
 import Stepper from "../components/Stepper";
-import elfsightLogo from "../images/elfsight.png";
 
 const Home = () => {
   const margins = ["0", "-25%", "-50%", "-75%"];
@@ -82,26 +81,7 @@ const Home = () => {
         </div>
       </section>
       <section className="w-full mt-32 flex ft-center">
-        <div className="bg-slate-100 rounded-xl w-8/12 h-104 flex flex-col items-evenly justify-around">
-          <div className="w-full h-4/6 flex items-center justify-evenly">
-            <CommentReviews />
-            <CommentReviews />
-            <CommentReviews />
-            <CommentReviews />
-          </div>
-          <div className="flex w-full f-center">
-            <div className="bg-slate-200 flex ft-center rounded-xl px-3 py-[0.8rem] max-h-6 max-w-44">
-              <img
-                src={elfsightLogo}
-                alt="elfsight logo"
-                className="max-w-6 max-h-6"
-              />
-              <p className="text-[0.8rem] text-slate-500">
-                Free Reviews widget
-              </p>
-            </div>
-          </div>
-        </div>
+        <CommentReviewsSection />
       </section>
       <section className="flex flex-col f-center mt-12 mb-32">
         <div className="slider w-[45%] rounded-xl border-2 border-slate-400 overflow-hidden">

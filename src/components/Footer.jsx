@@ -12,16 +12,18 @@ const Anchor = ({ href, content }) => {
 
 const FooterH4 = (props) => {
   return (
-    <h4 className="font-bold text-xl relative bottom-6">{props.content}</h4>
+    <h4 className="font-bold text-xl relative bottom-6 tablet:mb-[-1rem]">
+      {props.content}
+    </h4>
   );
 };
 
 const Footer = () => {
   return (
     <footer className="bg-[#dbdbdb] h-auto w-full bottom-0">
-      <div className="w-3/6 h-full flex flex-col justify-between mx-auto">
-        <section className="flex items-end w-full h-[304px]">
-          <div className="flex justify-between items-start w-full h-3/4">
+      <div className="w-3/6 tablet:w-10/12 h-full flex flex-col justify-between mx-auto">
+        <section className="flex items-end w-full min-h-[33vh] tablet:min-h-auto mb-10">
+          <div className="flex justify-between items-start w-full h-3/4 tablet:h-[70vh] tablet:mt-16 tablet:flex-col tablet:justify-around">
             <div>
               <FooterH4 content="Navigation" />
               <Anchor href="/aboutus" content="About Us" />
@@ -52,7 +54,7 @@ const Footer = () => {
         <div className="h-6px">
           <hr className="opacity-20 bg-white h-[4px] w-full" />
         </div>
-        <section className="flex w-full h-auto">
+        <section className="flex w-full h-auto tablet:flex-col tablet:items-center tablet:justify-around tablet:gap-4 tablet:mt-4 tablet:mb-4">
           <div className="flex ft-center basis-2/4 h-20 font-normal opacity-35">
             <p>
               Copyright © 2024 <a href="/"> by Wimple Auto Transport</a>. All

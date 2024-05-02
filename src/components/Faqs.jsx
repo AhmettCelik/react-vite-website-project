@@ -20,7 +20,9 @@ const Question = ({ question, answer }) => {
       </div>
 
       <div id="answer" className="answer">
-        <p className="font-normal pt-3 opacity-75 leading-[1.6]">{answer}</p>
+        <p className="font-normal pt-3 opacity-75 leading-[1.6] tablet:leading-[1.4] tablet:text-sm">
+          {answer}
+        </p>
       </div>
     </div>
   );
@@ -28,7 +30,7 @@ const Question = ({ question, answer }) => {
 
 const Faqs = () => {
   return (
-    <div className="h-full w-7/12 mx-auto">
+    <div className="h-full w-7/12 tablet:w-10/12 mx-auto">
       <h2 className="font-bold text-3xl text-center mb-8">
         Frequently Asked Questions
       </h2>

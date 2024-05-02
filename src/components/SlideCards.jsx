@@ -5,8 +5,8 @@ const SlideCard = ({ src, alt, h1, paragraph }) => {
     <div className="basis-1/4 slide">
       <img src={src} alt={alt} />
       <div className="w-[80%] mx-auto h-auto text-center">
-        <h1 className="text-2xl font-bold p-3">{h1}</h1>
-        <p className="mb-4 font-normal text-lg">{paragraph}</p>
+        <h1 className="text-2xl font-bold p-3 tablet:text-lg">{h1}</h1>
+        <p className="mb-4 font-normal text-lg tablet:text-sm">{paragraph}</p>
       </div>
     </div>
   );

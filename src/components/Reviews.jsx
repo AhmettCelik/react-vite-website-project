@@ -69,7 +69,7 @@ const CommentReviewsPattern = ({
   };
 
   return (
-    <div className="bg-white max-w-[22%] basis-1/4 h-auto max-h-full rounded-md">
+    <div className="bg-white max-w-[22%] basis-1/4 h-auto max-h-full tablet:min-h-full tablet:min-w-full rounded-md">
       <div className="p-4 flex flex-col gap-1 justify-around h-full">
         <div className="flex">
           <div className="bg-slate-600 rounded-full w-11 h-11"></div>
@@ -107,7 +107,7 @@ const CommentReviewsPattern = ({
 const CommentReviewsSection = () => {
   return (
     <div className="bg-slate-100 rounded-xl w-8/12 h-auto flex flex-col items-evenly p-6">
-      <div className="w-full h-4/6 flex items-start justify-evenly">
+      <div className="w-full h-4/6 flex items-start justify-evenly tablet:overflow-hidden">
         <CommentReviewsPattern
           userName="User_1"
           time="1 month ago"

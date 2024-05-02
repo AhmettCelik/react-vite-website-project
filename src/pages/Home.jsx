@@ -62,11 +62,11 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="w-full mt-32 flex ft-center">
+      <section className="w-full mt-32 tablet:mt-12 flex ft-center">
         <CommentReviewsSection />
       </section>
-      <section className="flex flex-col f-center mt-12 mb-32">
-        <div className="slider w-[45%] rounded-xl border-2 border-slate-400 overflow-hidden">
+      <section className="flex flex-col f-center mt-12 mb-32 tablet:mb-20">
+        <div className="slider w-[45%] tablet:w-[90%] tablet:h-[full] rounded-xl border-2 border-slate-400 overflow-hidden">
           <div className="slides flex w-[400%]">
             <div
               id="first"
@@ -75,8 +75,10 @@ const Home = () => {
             >
               <img src={doorToDoor} alt="door to door service foto" />
               <div className="w-[80%] mx-auto h-auto text-center">
-                <h1 className="text-2xl font-bold p-3">Door-to-door Service</h1>
-                <p className="mb-4 font-normal text-lg">
+                <h1 className="text-2xl font-bold p-3 tablet:text-lg">
+                  Door-to-door Service
+                </h1>
+                <p className="mb-4 font-normal text-lg tablet:text-sm">
                   Our company offers a comprehensive door-to-door service to our
                   valued customers. You can expect your vehicle to arrive at
                   your doorstep, fully prepared and ready to go, without any
@@ -118,12 +120,16 @@ const Home = () => {
       </section>
 
       <section className="w-full h-auto flex f-center">
-        <div className="w-4/6 h-auto flex flex-col ft-center">
-          <h1 className="text-4xl font-bold">
+        <div className="w-4/6 tablet:w-[95%] h-auto flex flex-col ft-center">
+          <h1 className="text-4xl tablet:text-3xl tablet:w-full font-bold">
             Vehicle Transportation Nationwide
           </h1>
-          <img src={mapFoto} alt="map foto" className="my-12 w-auto h-128" />
-          <p className="font-normal text-lg mb-32">
+          <img
+            src={mapFoto}
+            alt="map foto"
+            className="my-12 w-auto h-128 tablet:w-auto tablet:h-auto"
+          />
+          <p className="font-normal text-lg tablet:text-sm mb-32 tablet:mb-28">
             At Wimple, we believe in transparency to empower your decisions. Our
             transportation costs are designed with your business in mind—clear,
             competitive, and tailored to your unique needs.{" "}
@@ -133,7 +139,7 @@ const Home = () => {
           </p>
         </div>
       </section>
-      <section className="mt-32 mb-28 w-full h-auto">
+      <section className="mt-32 tablet:mt-0 mb-28 w-full h-auto">
         <Questions />
         <p className="text-center mt-20">
           Don't see your question above?{" "}

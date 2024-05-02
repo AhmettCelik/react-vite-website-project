@@ -235,7 +235,7 @@ const ChatUs = () => {
   };
 
   return (
-    <div className="fixed h-[70%] w-72">
+    <div className="fixed h-[70%] w-72 bottom-[7rem] left-[50rem] z-[1000]">
       <ChatUsBox display={display ? "block" : "hidden"} />;
       <button
         onClick={handleClick}

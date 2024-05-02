@@ -46,7 +46,7 @@ const Home = () => {
                 </h3>
               </div>
             </section>
-            <section className="flex items-center justify-end w-6/12 h-full bg-slate-400">
+            <section className="flex items-center justify-end w-6/12 h-full">
               <div className="w-8/12 h-auto bg-white rounded-md">
                 <Stepper />
               </div>

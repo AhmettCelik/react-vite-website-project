@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadset } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import logo from "../images/logo.png";
-import BackToTopBtn from "./BackToTopBtn";
+import BackToTopBtn, { StraightBackToTopBtn } from "./BackToTopBtn";
 
 const Links = ({ className, to, content }) => {
   return (
@@ -16,14 +17,21 @@ const Links = ({ className, to, content }) => {
 };
 
 const Header = () => {
+  const [displayOfDropDownSection, setDisplayOfDropDownSection] =
+    useState(false);
+
+  const handleHeaderExtendButtonClick = () => {
+    setDisplayOfDropDownSection((prevState) => !prevState);
+  };
+
   return (
     <header>
       <section
         id="header-first-section"
         className="w-full bg-white fixed z-50 top-0"
       >
-        <div className="flex flex-row justify-between items-center w-70 mx-auto h-16">
-          <div className="flex items-center justify-between w-6/12">
+        <div className="flex flex-row justify-between items-center w-70 tablet:w-full mx-auto h-16">
+          <div className="flex items-center justify-between w-6/12 tablet:w-11/12 tablet:mx-auto">
             <section>
               <Link
                 to="/"
@@ -42,7 +50,14 @@ const Header = () => {
                 </div>
               </Link>
             </section>
-            <section className="mr-8">
+
+            {/*Mobile header button*/}
+            <section className="min-tablet:hidden">
+              <button onClick={handleHeaderExtendButtonClick}>
+                <FontAwesomeIcon icon={faBars} />
+              </button>
+            </section>
+            <section className="mr-8 tablet:hidden">
               <nav>
                 <ul className="flex text-lg">
                   <Links to="/aboutus" className="mr-8" content="About Us" />
@@ -56,10 +71,34 @@ const Header = () => {
               </nav>
             </section>
           </div>
-          <section className="ml-40">
+          {/*Mobile first header dropdown section*/}
+          <section
+            className={`min-tablet:hidden fixed w-full top-[4rem] h-48 bg-white flex flex-col text-center justify-around ${
+              displayOfDropDownSection ? "block" : "hidden"
+            }`}
+          >
+            <hr className="w-[85%] mx-auto" />
+            <nav className="h-[60%]">
+              <ul className="flex flex-col justify-around text-md font-normal h-full">
+                <Links to="/aboutus" content="About Us" />
+                <Links to="/whywimple" content="Why Wimple?" />
+                <Links to="/solutions" content="Solutions" />
+              </ul>
+            </nav>
+
+            <div className="flex ft-center gap-4">
+              <a className="text-md font-normal" href="">
+                (888) 491-7162
+              </a>
+              <section>
+                <StraightBackToTopBtn />
+              </section>
+            </div>
+          </section>
+          <section className="ml-40 tablet:hidden">
             <BackToTopBtn padding={{ paddingY: "0.5rem", paddingX: "1rem" }} />
           </section>
-          <div className="flex items-center justify-between w-[23%]">
+          <div className="flex items-center justify-between w-[23%] tablet:hidden">
             <section className="mr-6 text-lg">
               <a className="mr-2" href="">
                 (888) 491-7162
@@ -73,9 +112,9 @@ const Header = () => {
         id="header-second-section"
         className="w-full bg-[#b3002d] z-10 relative top-16"
       >
-        <div className="w-70 mx-auto h-12 flex items-center">
-          <nav className="w-5/12">
-            <ul className="text-white text-lg w-full flex justify-between">
+        <div className="w-70 tablet:w-full mx-auto h-12 tablet:h-8 flex items-center">
+          <nav className="w-5/12 tablet:w-full">
+            <ul className="text-white text-lg tablet:text-[0.8rem] w-full flex justify-between tablet:justify-around">
               <Links to="/comparequotes" content="Compare Quotes" />
               <Links to="/helpcenter" content="Help Center" />
               <Links to="/trackshipment" content="Track a Shipment" />

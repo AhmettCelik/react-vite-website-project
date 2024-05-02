@@ -65,7 +65,7 @@ const StepperStep = ({
     <section className="flex ft-center">
       <div
         onClick={handleClick}
-        className={`bg-${backgroundColor} w-7 h-7 rounded-full flex ft-center cursor-pointer`}
+        className={`bg-${backgroundColor} w-7 h-7 tablet:w-5 tablet:h-5 rounded-full flex ft-center cursor-pointer`}
       >
         <p className={`font-normal text-${textColor}`}>{content}</p>
       </div>
@@ -100,7 +100,7 @@ const StepperBackBtn = ({ display, onClickFunctionProp }) => {
 const SubSection = (props) => {
   return (
     <div className={`w-full flex ft-center h-3/12 mb-4 ${props.display}`}>
-      <p className="font-normal text-center text-sm w-11/12">
+      <p className="font-normal text-center text-sm tablet:text-[0.8rem] w-11/12">
         {props.paragraphContent}
         <a className={`${props.firstAnchorStyle}`} href={props.firstHref}>
           {props.anchorContent}
@@ -119,15 +119,12 @@ const Step_1 = ({ display, count, increment, decrement }) => {
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
-      <p className="font-normal text-[0.95rem] mt-4">
+      <p className="font-normal text-[0.95rem] mt-4 tablet:mt-2">
         Get an <strong>instant</strong> & <strong>free quote</strong> or call
         (888) 491-7162
       </p>
 
       <div className="h-8 flex justify-center items-center my-3">
-        <button onClick={decrement} className="mr-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
-        </button>
         <StepperStep
           count={count}
           backgroundColor={"[#b3002d]"}
@@ -163,9 +160,6 @@ const Step_1 = ({ display, count, increment, decrement }) => {
           content={5}
           display="hidden"
         />
-        <button onClick={increment} className="ml-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
-        </button>
       </div>
 
       <form className="form w-10/12 mt-2 flex flex-col gap-4">
@@ -183,10 +177,6 @@ const Step_2 = ({ display, count, increment, decrement }) => {
     >
       <p className="text-[0.95rem] mt-3">Transport Type</p>
       <div className="w-full h-8 flex justify-center items-center my-3">
-        <button onClick={decrement} className="mr-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
-        </button>
-
         <StepperStep
           count={count}
           backgroundColor={"[#b3002d]"}
@@ -222,9 +212,6 @@ const Step_2 = ({ display, count, increment, decrement }) => {
           content={5}
           display="hidden"
         />
-        <button onClick={increment} className="ml-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
-        </button>
       </div>
       <section className="form w-10/12 mt-2 flex flex-col gap-4">
         <FormElementButtons content={"Open"} />
@@ -241,10 +228,6 @@ const Step_3 = ({ display, count, increment, decrement }) => {
     >
       <p className="font-normal text-[0.95rem] mt-4">Vehicle</p>
       <div className="w-full h-8 flex justify-center items-center my-4">
-        <button onClick={decrement} className="mr-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
-        </button>
-
         <StepperStep
           count={count}
           backgroundColor={"[#b3002d]"}
@@ -280,9 +263,6 @@ const Step_3 = ({ display, count, increment, decrement }) => {
           content={5}
           display="hidden"
         />
-        <button onClick={increment} className="ml-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
-        </button>
       </div>
       <form className="w-10/12 h-full flex flex-col gap-1">
         <YearOptions />
@@ -315,10 +295,6 @@ const Step_4 = ({ display, count, increment, decrement }) => {
         (888) 491-7162
       </p>
       <div className="w-full h-8 flex justify-center items-center my-3">
-        <button onClick={decrement} className="mr-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
-        </button>
-
         <StepperStep
           count={count}
           backgroundColor={"[#b3002d]"}
@@ -354,9 +330,6 @@ const Step_4 = ({ display, count, increment, decrement }) => {
           content={5}
           display="hidden"
         />
-        <button onClick={increment} className="ml-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
-        </button>
       </div>
     </div>
   );
@@ -372,10 +345,6 @@ const Step_5 = ({ display, count, increment, decrement }) => {
         (888) 491-7162
       </p>
       <div className="w-full h-8 flex justify-center items-center my-3">
-        <button onClick={decrement} className="mr-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={90} />
-        </button>
-
         <StepperStep
           count={count}
           backgroundColor={"[#b3002d]"}
@@ -411,9 +380,6 @@ const Step_5 = ({ display, count, increment, decrement }) => {
           content={5}
           display="hidden"
         />
-        <button onClick={increment} className="ml-4">
-          <FontAwesomeIcon icon={faCaretDown} rotation={270} />
-        </button>
       </div>
     </div>
   );
@@ -469,7 +435,7 @@ const Stepper = () => {
         display={count === 5 ? "flex" : "hidden"}
         count={count}
       />
-      <div className="w-full flex f-center gap-4 my-4 ">
+      <div className="w-full flex f-center gap-4 my-4 tablet:my-2 ">
         <StepperBackBtn
           display={count > 1 ? "inline-block" : "hidden"}
           onClickFunctionProp={decrement}

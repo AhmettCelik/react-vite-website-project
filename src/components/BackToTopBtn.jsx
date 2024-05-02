@@ -35,4 +35,19 @@ const BackToTopBtn = ({ padding, textSize }) => {
   );
 };
 
+const StraightBackToTopBtn = () => {
+  const goToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  return (
+    <button
+      onClick={goToTop}
+      className="text-white bg-[#b3002d] rounded py-2 px-4"
+    >
+      Get a Quote
+    </button>
+  );
+};
+
+export { StraightBackToTopBtn };
 export default BackToTopBtn;

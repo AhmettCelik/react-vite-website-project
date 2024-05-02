@@ -27,6 +27,13 @@ export default {
         "for-opacity-black": "rgba(0, 0, 0, 0.2)",
         "for-opacity-white": "rgba(255, 255, 255, 0.2)",
       },
+
+      screens: {
+        "min-tablet": { min: "769px" },
+        tablet: { max: "768px" },
+        mobileL: { max: "425px" },
+        mobileM: { max: "375px" },
+      },
     },
   },
   plugins: [],

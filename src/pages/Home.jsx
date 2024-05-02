@@ -30,29 +30,29 @@ const Home = () => {
 
   return (
     <div className="h-auto w-full bg-[#ededed]">
-      <section className="custom-home-first-section bg-blend-overlay bg-cover bg-center w-full h-[85vh]">
-        <div className="flex flex-col justify-end h-full w-4/6 mx-auto">
-          <div className="w-full h-[59%] flex">
-            <section className="flex flex-col justify-center w-7/12 h-full">
-              <div className="flex items-end h-1/2 w-5/6">
-                <h1 className="text-5xl font-bold text-white">
+      <section className="custom-home-first-section bg-blend-overlay bg-cover bg-center w-full h-[85vh] tablet:h-[70vh]">
+        <div className="flex flex-col justify-end h-full w-4/6 tablet:w-full mx-auto">
+          <div className="w-full h-[59%] flex tablet:flex-col tablet:items-center tablet:text-center tablet:h-full">
+            <section className="flex flex-col tablet:items-center justify-center tablet:justify-end w-7/12 tablet:w-full h-full tablet:h-[60%]">
+              <div className="flex items-end h-1/2 w-5/6 tablet:w-full">
+                <h1 className="text-5xl tablet:text-3xl font-bold text-white">
                   Home of Fast, Easy and Reliable Transportation
                 </h1>
               </div>
-              <div className="h-1/2 w-3/6">
-                <h3 className="text-xl mt-10 text-white">
+              <div className="md:h-1/2 w-4/6 tablet:w-full">
+                <h3 className="text-xl tablet:lg mt-10 tablet:mt-4 text-white">
                   Wimple Auto Transport: Redefining Excellence in Auto
                   Transportation
                 </h3>
               </div>
             </section>
-            <section className="flex items-center justify-end w-6/12 h-full">
-              <div className="w-8/12 h-auto bg-white rounded-md">
+            <section className="flex items-center justify-end tablet:justify-center w-6/12 tablet:w-full h-full tablet:h-5/6">
+              <div className="w-8/12 tablet:w-[98%] tablet:min-h-[80%] bg-white rounded-md">
                 <Stepper />
               </div>
             </section>
           </div>
-          <div className="w-full h-2/6">
+          <div className="w-full h-2/6 hidden min-tablet:block">
             <div className="h-2/6 flex justify-center items-end">
               <h1 className="text-4xl font-bold text-white">
                 Trusted by Customers from All Over Country

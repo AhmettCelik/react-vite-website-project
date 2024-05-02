@@ -141,7 +141,7 @@ const Home = () => {
       </section>
       <section className="mt-32 tablet:mt-0 mb-28 w-full h-auto">
         <Questions />
-        <p className="text-center mt-20">
+        <p className="text-center mt-20 tablet:w-10/12 tablet:mx-auto">
           Don't see your question above?{" "}
           <a href="" className="underline text-blue-400">
             Chat with us
@@ -155,7 +155,7 @@ const Home = () => {
       </section>
       <section className="w-full mb-32">
         <div className="w-full text-center">
-          <h1 className="font-bold text-4xl mb-8">
+          <h1 className="font-bold text-4xl tablet:text-3xl mb-8">
             Get your discounted qutoe now!
           </h1>
           <BackToTopBtn

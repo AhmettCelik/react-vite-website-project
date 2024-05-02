@@ -1,5 +1,36 @@
 import React from "react";
 import firstPhoto from "../images/aboutusfirst.png";
+import aboutusguy from "../images/aboutusguy.png";
+import options from "../images/answer.png";
+import timesave from "../images/clock.png";
+import location from "../images/distance.png";
+import price from "../images/price-tag.png";
+import customerservice from "../images/support.png";
+import shipment from "../images/tracking.png";
+import BackToTopBtn from "../components/BackToTopBtn";
+
+const WhyChooseUs = ({
+  whyChooseUsPng,
+  whyChooseUsTitleContent,
+  whyChooseUsParagraphContent,
+  whyChooseUsImageAlt,
+}) => {
+  return (
+    <div className="flex justify-evenly items-center w-full">
+      <div className="rounded-xl bg-[#b3002d] max-h-8 max-w-8 p-8 flex f-center">
+        <img
+          src={whyChooseUsPng}
+          alt={whyChooseUsImageAlt}
+          className="max-w-8 max-h-8"
+        />
+      </div>
+      <div className="text-start max-w-[70%] h-48 flex flex-col justify-center">
+        <h2 className="font-bold">{whyChooseUsTitleContent}</h2>
+        <p className="font-normal">{whyChooseUsParagraphContent}</p>
+      </div>
+    </div>
+  );
+};
 
 const AboutUs = () => {
   return (
@@ -69,6 +100,75 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="w-full flex flex-col ft-center mb-32 mt-44">
+        <div className="w-[67%] h-auto">
+          <h1 className="font-bold text-4xl">Why Choose Us?</h1>
+        </div>
+        <div className="w-[67%] h-[34rem] grid grid-cols-[2fr_1.2fr_2fr]">
+          <WhyChooseUs
+            whyChooseUsImageAlt={"price tag icon"}
+            whyChooseUsPng={price}
+            whyChooseUsTitleContent={"Competitive Pricing"}
+            whyChooseUsParagraphContent={
+              "Wimple offers the most competitive prices in the market compared to other companies."
+            }
+          />
+          <div className="row-span-3 self-center">
+            <img src={aboutusguy} alt="a guy" />
+          </div>
+          <WhyChooseUs
+            whyChooseUsImageAlt={"order tracking icon"}
+            whyChooseUsPng={location}
+            whyChooseUsTitleContent={"Order Tracking"}
+            whyChooseUsParagraphContent={
+              "We provide customers real-time updates on their vehicle's status and delivery through our website."
+            }
+          />
+          <WhyChooseUs
+            whyChooseUsImageAlt={"flexible payment options icon"}
+            whyChooseUsPng={options}
+            whyChooseUsTitleContent={"Flexible Payment Options"}
+            whyChooseUsParagraphContent={
+              "We offer a variety of flexible payment options to meet your needs."
+            }
+          />
+          <WhyChooseUs
+            whyChooseUsImageAlt={"clock icon"}
+            whyChooseUsPng={timesave}
+            whyChooseUsTitleContent={"Express Transportation"}
+            whyChooseUsParagraphContent={
+              "We provide fast and reliable transportation with minimal wait times, prioritizing our customer's urgent needs."
+            }
+          />
+          <WhyChooseUs
+            whyChooseUsImageAlt={"24/7 customer service icon"}
+            whyChooseUsPng={customerservice}
+            whyChooseUsTitleContent={"24/7 Customer Service"}
+            whyChooseUsParagraphContent={
+              "We offer 24/7 customer support. Our team is available to help with any questions or issues you have via phone, email, or live chat. We pride ourselves on providing personalized and reliable support to ensure your satisfaction."
+            }
+          />
+          <WhyChooseUs
+            whyChooseUsImageAlt={"shipment icon"}
+            whyChooseUsPng={shipment}
+            whyChooseUsTitleContent={"Door-to-door Service"}
+            whyChooseUsParagraphContent={
+              "Our company offers a comprehensive door-to-door service to our valued customers. You can expect your vehicle to arrive at your doorstep, fully prepared and ready to go, without any additional effort required on your part."
+            }
+          />
+        </div>
+      </section>
+      <section className="w-full mb-32">
+        <div className="w-[67%] text-center mx-auto">
+          <h1 className="font-bold text-4xl mb-8">
+            Get your discounted qutoe now!
+          </h1>
+          <BackToTopBtn
+            padding={{ paddingY: "0.5rem", paddingX: "3rem" }}
+            textSize="text-2xl"
+          />
         </div>
       </section>
       <p className="invisible">By eniac</p>

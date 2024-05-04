@@ -1,25 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-
-const FormElement = ({ formElementContent }) => {
-  return (
-    <div className="input-group relative">
-      <input
-        id="zip"
-        type="text"
-        className="input p-2 h-10 w-full outline-none border-[0.1rem] rounded border-solid border-slate-400 opacity-65 focus:border-[#b3002d] focus:border-2"
-      />
-      <label
-        htmlFor="zip"
-        className="placeholder px-2 absolute top-[0.5rem] left-1 text-md font-normal duration-[0.3s] pointer-events-none bg-white text-slate-400 opacity-100"
-      >
-        {formElementContent}
-      </label>
-    </div>
-  );
-};
+import {
+  handleOnChangeFromCity,
+  handleOnChangeToCity,
+} from "../modules/stepperSlice";
 
 const FormElementButtons = ({ content }) => {
   return (
@@ -55,7 +42,6 @@ const StepperStep = ({
   textColor,
   lineColor,
   content,
-  count,
 }) => {
   return (
     <section className="flex ft-center">
@@ -109,7 +95,22 @@ const SubSection = (props) => {
   );
 };
 
-const Step_1 = ({ display, count, increment, decrement }) => {
+const Step_1 = ({ display }) => {
+  const dispatch = useDispatch();
+  const fromCityValue = useSelector(
+    (store) => store.stepper.formValues.fromCity
+  );
+  const toCityValue = useSelector((store) => store.stepper.formValues.toCity);
+
+  const handleChangeFromCity = (e) => {
+    dispatch(handleOnChangeFromCity(e.target.value));
+  };
+
+  const handleChangeToCity = (e) => {
+    dispatch(handleOnChangeToCity(e.target.value));
+  };
+  console.log(fromCityValue);
+  console.log(toCityValue);
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
@@ -119,10 +120,38 @@ const Step_1 = ({ display, count, increment, decrement }) => {
         (888) 491-7162
       </p>
 
-      <form className="form w-10/12 mt-2 flex flex-col gap-4">
-        <FormElement formElementContent="From (ZIP or City)" />
-        <FormElement formElementContent="To (ZIP or City)" />
-      </form>
+      <div className="form w-10/12 mt-2 flex flex-col gap-4">
+        <div className="input-group relative">
+          <input
+            value={fromCityValue}
+            onChange={handleChangeFromCity}
+            id="zip"
+            type="text"
+            className="input p-2 h-10 w-full outline-none border-[0.1rem] rounded border-solid border-slate-400 opacity-65 focus:border-[#b3002d] focus:border-2"
+          />
+          <label
+            htmlFor="zip"
+            className="placeholder px-2 absolute top-[0.5rem] left-1 text-md font-normal duration-[0.3s] pointer-events-none bg-white text-slate-400 opacity-100"
+          >
+            From (ZIP or City)
+          </label>
+        </div>
+        <div className="input-group relative">
+          <input
+            value={toCityValue}
+            onChange={handleChangeToCity}
+            id="zip"
+            type="text"
+            className="input p-2 h-10 w-full outline-none border-[0.1rem] rounded border-solid border-slate-400 opacity-65 focus:border-[#b3002d] focus:border-2"
+          />
+          <label
+            htmlFor="zip"
+            className="placeholder px-2 absolute top-[0.5rem] left-1 text-md font-normal duration-[0.3s] pointer-events-none bg-white text-slate-400 opacity-100"
+          >
+            To (ZIP or City)
+          </label>
+        </div>
+      </div>
     </div>
   );
 };
@@ -197,6 +226,7 @@ const Step_5 = ({ display, count, increment, decrement }) => {
 };
 
 const Stepper = () => {
+  const stepperState = useSelector((store) => store.stepper);
   const [count, setCount] = useState(1);
   const subSectionFirstSecondParagraphContent =
     "No credit card required! Schedule and save money now.";
@@ -205,9 +235,6 @@ const Stepper = () => {
   const subSectionFifthParagraphFirstContent =
     "By continuing, you agree to our ";
   const subSectionFifthParagraphSecondContent = " and acknowledge ";
-  const backgroundColor = "[#ededed]";
-  const textColor = "slate-400";
-  const lineColor = "slate-200";
 
   const increment = () => {
     count < 5 && setCount(count + 1);
@@ -221,32 +248,32 @@ const Stepper = () => {
     <div className="w-full h-auto flex flex-col items-center justify-evenly">
       <div className="flex mt-4">
         <StepperStep
-          backgroundColor={backgroundColor}
-          textColor={textColor}
-          lineColor={lineColor}
+          backgroundColor={count >= 1 ? "[#b3002d]" : "[#ededed]"}
+          textColor={count >= 1 ? "white" : "slate-400"}
+          lineColor={count > 1 ? "[#b3002d]" : "slate-200"}
           content={"1"}
         />
         <StepperStep
-          backgroundColor={backgroundColor}
-          textColor={textColor}
-          lineColor={lineColor}
+          backgroundColor={count >= 2 ? "[#b3002d]" : "[#ededed]"}
+          textColor={count >= 2 ? "white" : "slate-400"}
+          lineColor={count > 2 ? "[#b3002d]" : "slate-200"}
           content={"2"}
         />
         <StepperStep
-          backgroundColor={backgroundColor}
-          textColor={textColor}
-          lineColor={lineColor}
+          backgroundColor={count >= 3 ? "[#b3002d]" : "[#ededed]"}
+          textColor={count >= 3 ? "white" : "slate-400"}
+          lineColor={count > 3 ? "[#b3002d]" : "slate-200"}
           content={"3"}
         />
         <StepperStep
-          backgroundColor={backgroundColor}
-          textColor={textColor}
-          lineColor={lineColor}
+          backgroundColor={count >= 4 ? "[#b3002d]" : "[#ededed]"}
+          textColor={count >= 4 ? "white" : "slate-400"}
+          lineColor={count > 4 ? "[#b3002d]" : "slate-200"}
           content={"4"}
         />
         <StepperStep
-          backgroundColor={backgroundColor}
-          textColor={textColor}
+          backgroundColor={count >= 5 ? "[#b3002d]" : "[#ededed]"}
+          textColor={count >= 5 ? "white" : "slate-400"}
           content={"5"}
           display={"hidden"}
         />

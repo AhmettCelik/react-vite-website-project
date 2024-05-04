@@ -1,0 +1,32 @@
+{
+  "cities": [
+    {
+      "id": 1,
+      "name": "Austin"
+    },
+    {
+      "id": 1,
+      "name": "Atlanta"
+    },
+    {
+      "id": 1,
+      "name": "San Francisco"
+    },
+    {
+      "id": 1,
+      "name": "San Diego"
+    }
+  ],
+
+  "Brands": [
+    {
+      "name": "BMW",
+      "models": ["M3", "M4", "M5"]
+    },
+
+    {
+      "name": "Mercedes-Benz",
+      "models": ["GLA", "GLB", "GLC"]
+    }
+  ]
+}

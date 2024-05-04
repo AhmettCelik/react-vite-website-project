@@ -57,14 +57,9 @@ const StepperStep = ({
   content,
   count,
 }) => {
-  const handleClick = () => {
-    count > content && (count = content);
-  };
-
   return (
     <section className="flex ft-center">
       <div
-        onClick={handleClick}
         className={`bg-${backgroundColor} w-7 h-7 tablet:w-5 tablet:h-5 rounded-full flex ft-center cursor-pointer`}
       >
         <p className={`font-normal text-${textColor}`}>{content}</p>
@@ -124,44 +119,6 @@ const Step_1 = ({ display, count, increment, decrement }) => {
         (888) 491-7162
       </p>
 
-      <div className="h-8 flex justify-center items-center my-3">
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"slate-200"}
-          content={1}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
-          lineColor={"slate-200"}
-          content={2}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
-          lineColor={"slate-200"}
-          content={3}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
-          lineColor={"slate-200"}
-          content={4}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
-          content={5}
-          display="hidden"
-        />
-      </div>
-
       <form className="form w-10/12 mt-2 flex flex-col gap-4">
         <FormElement formElementContent="From (ZIP or City)" />
         <FormElement formElementContent="To (ZIP or City)" />
@@ -176,43 +133,7 @@ const Step_2 = ({ display, count, increment, decrement }) => {
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
       <p className="text-[0.95rem] mt-3">Transport Type</p>
-      <div className="w-full h-8 flex justify-center items-center my-3">
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={1}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"slate-200"}
-          content={2}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
-          lineColor={"slate-200"}
-          content={3}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
-          lineColor={"slate-200"}
-          content={4}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
-          content={5}
-          display="hidden"
-        />
-      </div>
+
       <section className="form w-10/12 mt-2 flex flex-col gap-4">
         <FormElementButtons content={"Open"} />
         <FormElementButtons content={"Enclosed"} />
@@ -227,43 +148,7 @@ const Step_3 = ({ display, count, increment, decrement }) => {
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
       <p className="font-normal text-[0.95rem] mt-4">Vehicle</p>
-      <div className="w-full h-8 flex justify-center items-center my-4">
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={1}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={2}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"slate-200"}
-          content={3}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
-          lineColor={"slate-200"}
-          content={4}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
-          content={5}
-          display="hidden"
-        />
-      </div>
+
       <form className="w-10/12 h-full flex flex-col gap-1">
         <YearOptions />
         <select
@@ -294,43 +179,6 @@ const Step_4 = ({ display, count, increment, decrement }) => {
         Get an <strong>instant</strong> & <strong>free quote</strong> or call
         (888) 491-7162
       </p>
-      <div className="w-full h-8 flex justify-center items-center my-3">
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={1}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={2}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={3}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"slate-200"}
-          content={4}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#ededed]"}
-          textColor={"slate-400"}
-          content={5}
-          display="hidden"
-        />
-      </div>
     </div>
   );
 };
@@ -344,43 +192,6 @@ const Step_5 = ({ display, count, increment, decrement }) => {
         Get an <strong>instant</strong> & <strong>free quote</strong> or call
         (888) 491-7162
       </p>
-      <div className="w-full h-8 flex justify-center items-center my-3">
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={1}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={2}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={3}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          lineColor={"[#b3002d]"}
-          content={4}
-        />
-        <StepperStep
-          count={count}
-          backgroundColor={"[#b3002d]"}
-          textColor={"white"}
-          content={5}
-          display="hidden"
-        />
-      </div>
     </div>
   );
 };
@@ -394,6 +205,9 @@ const Stepper = () => {
   const subSectionFifthParagraphFirstContent =
     "By continuing, you agree to our ";
   const subSectionFifthParagraphSecondContent = " and acknowledge ";
+  const backgroundColor = "[#ededed]";
+  const textColor = "slate-400";
+  const lineColor = "slate-200";
 
   const increment = () => {
     count < 5 && setCount(count + 1);
@@ -405,6 +219,38 @@ const Stepper = () => {
 
   return (
     <div className="w-full h-auto flex flex-col items-center justify-evenly">
+      <div className="flex mt-4">
+        <StepperStep
+          backgroundColor={backgroundColor}
+          textColor={textColor}
+          lineColor={lineColor}
+          content={"1"}
+        />
+        <StepperStep
+          backgroundColor={backgroundColor}
+          textColor={textColor}
+          lineColor={lineColor}
+          content={"2"}
+        />
+        <StepperStep
+          backgroundColor={backgroundColor}
+          textColor={textColor}
+          lineColor={lineColor}
+          content={"3"}
+        />
+        <StepperStep
+          backgroundColor={backgroundColor}
+          textColor={textColor}
+          lineColor={lineColor}
+          content={"4"}
+        />
+        <StepperStep
+          backgroundColor={backgroundColor}
+          textColor={textColor}
+          content={"5"}
+          display={"hidden"}
+        />
+      </div>
       <Step_1
         increment={increment}
         decrement={decrement}

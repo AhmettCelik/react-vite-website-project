@@ -96,6 +96,12 @@ const SubSection = (props) => {
 };
 
 const Step_1 = ({ display }) => {
+  const [firstPlaceholderDisplay, setFirstPlaceholderDisplay] = useState(
+    "top-[0.5rem] left-1 text-md text-slate-400"
+  );
+  const [secondPlaceholderDisplay, setSecondPlaceholderDisplay] = useState(
+    "top-[0.5rem] left-1 text-md text-slate-400"
+  );
   const dispatch = useDispatch();
   const fromCityValue = useSelector(
     (store) => store.stepper.formValues.fromCity
@@ -104,13 +110,22 @@ const Step_1 = ({ display }) => {
 
   const handleChangeFromCity = (e) => {
     dispatch(handleOnChangeFromCity(e.target.value));
+    fromCityValue !== ""
+      ? setFirstPlaceholderDisplay("top-[-0.6rem] left-[0.6rem] text-[0.8rem]")
+      : setFirstPlaceholderDisplay(
+          "top-[0.5rem] left-1 text-md text-slate-400"
+        );
   };
 
   const handleChangeToCity = (e) => {
     dispatch(handleOnChangeToCity(e.target.value));
+    toCityValue !== ""
+      ? setSecondPlaceholderDisplay("top-[-0.6rem] left-[0.6rem] text-[0.8rem]")
+      : setSecondPlaceholderDisplay(
+          "top-[0.5rem] left-1 text-md text-slate-400"
+        );
   };
-  console.log(fromCityValue);
-  console.log(toCityValue);
+
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
@@ -131,11 +146,14 @@ const Step_1 = ({ display }) => {
           />
           <label
             htmlFor="zip"
-            className="placeholder px-2 absolute top-[0.5rem] left-1 text-md font-normal duration-[0.3s] pointer-events-none bg-white text-slate-400 opacity-100"
+            className={`placeholder px-2 absolute font-normal duration-[0.3s] pointer-events-none bg-white opacity-100 ${firstPlaceholderDisplay}`}
           >
             From (ZIP or City)
           </label>
         </div>
+        <p className="text-[0.7rem] font-normal hidden">
+          Enter valid City or ZIP
+        </p>
         <div className="input-group relative">
           <input
             value={toCityValue}
@@ -146,7 +164,7 @@ const Step_1 = ({ display }) => {
           />
           <label
             htmlFor="zip"
-            className="placeholder px-2 absolute top-[0.5rem] left-1 text-md font-normal duration-[0.3s] pointer-events-none bg-white text-slate-400 opacity-100"
+            className={`placeholder px-2 absolute font-normal duration-[0.3s] pointer-events-none bg-white opacity-100 ${secondPlaceholderDisplay}`}
           >
             To (ZIP or City)
           </label>
@@ -237,6 +255,8 @@ const Stepper = () => {
   const subSectionFifthParagraphSecondContent = " and acknowledge ";
 
   const increment = () => {
+    if (stepperState.formValues.fromCity) {
+    }
     count < 5 && setCount(count + 1);
   };
 

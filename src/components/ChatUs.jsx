@@ -235,8 +235,8 @@ const ChatUs = () => {
   };
 
   return (
-    <div className="fixed h-[70%] w-72 z-[1000]">
-      <ChatUsBox display={display ? "block" : "hidden"} />;
+    <div className={`fixed h-[70%] w-72  ${display ? "z-[1000]" : "z-0"}`}>
+      <ChatUsBox display={display ? "block" : "hidden"} />
       <button
         onClick={handleClick}
         className="custom-chat-us bg-white h-16 w-16 rounded-full fixed bottom-8 right-8 flex ft-center active:w-[3.9rem] active:h-[3.9rem] duration-[0.1s]"

@@ -16,7 +16,7 @@ const PriceLiTags = ({ content }) => {
 const QuotePage = () => {
   return (
     <div className="h-auto w-full bg-[#ededed]">
-      <main className="flex f-center mt-16 mb-16 pt-16 h-[85vh] tablet:h-auto tablet:w-full">
+      <main className="flex f-center mt-16 mb-16 tablet:mb-0 tablet:pb-20 pt-16 h-[85vh] tablet:h-auto tablet:w-full">
         {/*Main Section*/}
         <section className="grid min-tablet:grid-cols-2 grid-rows-2 tablet:grid-rows-[1fr_400px_420px_300px] w-4/6 h-full tablet:w-10/12 tablet:gap-4">
           {/*Price Section*/}
@@ -130,7 +130,7 @@ const QuotePage = () => {
         </section>
         {/*Main Section*/}
       </main>
-      <section className="h-auto w-4/6 mx-auto pb-16">
+      <section className="h-auto w-4/6 mx-auto pb-16 tablet:hidden">
         <div className="h-2/6 flex justify-center items-end">
           <h1 className="text-5xl font-bold">
             Trusted by Customers from All Over Country

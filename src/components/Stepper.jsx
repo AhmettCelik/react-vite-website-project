@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 import {
+  handleBrandChange,
   handleOnChangeFromCity,
   handleOnChangeToCity,
 } from "../modules/stepperSlice";
@@ -174,7 +176,7 @@ const Step_1 = ({ display }) => {
   );
 };
 
-const Step_2 = ({ display, count, increment, decrement }) => {
+const Step_2 = ({ display }) => {
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
@@ -189,21 +191,62 @@ const Step_2 = ({ display, count, increment, decrement }) => {
   );
 };
 
-const Step_3 = ({ display, count, increment, decrement }) => {
+const BASE_URL = "http://localhost:3005";
+
+const Step_3 = ({ display }) => {
+  const dispatch = useDispatch();
+  const brandValue = useSelector(
+    (store) => store.stepper.formValues.selectedBrand
+  );
+
+  const [brands, setBrands] = useState([]);
+  const [models, setModels] = useState([]);
+
+  const getCars = async () => {
+    const brandsResponse = await axios.get(`${BASE_URL}/brands`);
+    setBrands(brandsResponse.data);
+  };
+
+  const getModels = () => {
+    const getModel = (brand) => {
+      if (brand.name == brandValue) {
+        setModels(brand.models);
+      }
+    };
+    brands.map((brand) => getModel(brand));
+  };
+
+  const handleMakeChange = (e) => {
+    dispatch(handleBrandChange(e.target.value));
+    getModels();
+    console.log(models);
+    console.log(brandValue);
+  };
+
+  useEffect(() => {
+    getCars();
+  }, []);
+
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
       <p className="font-normal text-[0.95rem] mt-4">Vehicle</p>
-
       <form className="w-10/12 h-full flex flex-col gap-1">
         <YearOptions />
         <select
           name="make"
           id="make"
+          onChange={handleMakeChange}
+          value={brandValue}
           className="p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500"
         >
           <option value="make">Make</option>
+          {brands.map((brand) => (
+            <option key={brand.id} value={brand.name}>
+              {brand.name}
+            </option>
+          ))}
         </select>
         <select
           name="model"

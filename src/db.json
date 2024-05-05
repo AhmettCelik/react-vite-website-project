@@ -18,13 +18,15 @@
     }
   ],
 
-  "Brands": [
+  "brands": [
     {
+      "id": 1,
       "name": "BMW",
       "models": ["M3", "M4", "M5"]
     },
 
     {
+      "id": 2,
       "name": "Mercedes-Benz",
       "models": ["GLA", "GLB", "GLC"]
     }

@@ -235,7 +235,11 @@ const ChatUs = () => {
   };
 
   return (
-    <div className={`fixed h-[70%] w-72  ${display ? "z-[1000]" : "z-0"}`}>
+    <div
+      className={`fixed  ${
+        display ? "z-[1000] h-[70%] w-72" : "z-0 h-16 w-16"
+      }`}
+    >
       <ChatUsBox display={display ? "block" : "hidden"} />
       <button
         onClick={handleClick}

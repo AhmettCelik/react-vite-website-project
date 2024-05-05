@@ -35,8 +35,8 @@ const WhyChooseUs = ({
 const AboutUs = () => {
   return (
     <div className="bg-[#ededed]">
-      <section className="custom-about-first-section w-full h-[50vh] text-white mt-16 flex ft-center">
-        <div className="flex flex-col justify-evenly items-center h-4/6 w-[67%]">
+      <section className="custom-about-first-section w-full h-[50vh] tablet:h-[75vh] text-white mt-16 flex ft-center">
+        <div className="flex flex-col justify-evenly items-center h-4/6 tablet:h-5/6 w-[67%] tablet:w-10/12">
           <h1 className="text-4xl font-bold">
             Get to Know Our Story: Passionate and Reliable Auto Transportation
             Services
@@ -55,20 +55,20 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
-      <section className="w-[67%] m-auto text-2xl font-bold">
+      <section className="w-[67%] m-auto text-2xl font-bold tablet:text-center">
         <h1 className="mt-4 text-white">
           We are committed to providing the best quality of service
         </h1>
       </section>
       <section className="w-full h-auto flex justify-center mt-24 mb-24 tablet:flex-col tablet:items-center">
-        <div className="w-[67%] flex justify-end relative tablet:flex-col tablet:items-center">
-          <div>
-            <div className="custom-about-us-photo bg-cover w-[26%] h-[93%] max-h-80 absolute left-[-1.7rem] top-8 z-30"></div>
-            <div className="w-[26.9%] h-[96%] max-h-80 bg-black absolute left-[-2rem] top-[1.7rem] rounded z-20"></div>
-            <div className="w-[26.9%] h-[96%] max-h-80 bg-pink-600 absolute left-[-2rem] top-[1.7rem] rounded rotate-[-17deg] z-10"></div>
+        <div className="w-[67%] flex justify-end relative tablet:flex-col tablet:items-center tablet:w-full">
+          <div className="">
+            <div className="custom-about-us-photo bg-cover w-[26%] h-[93%] max-h-80 absolute left-[-1.7rem] top-8 z-30 tablet:hidden"></div>
+            <div className="w-[26.9%] h-[96%] max-h-80 bg-black absolute left-[-2rem] top-[1.7rem] rounded z-20 tablet:hidden"></div>
+            <div className="w-[26.9%] h-[96%] max-h-80 bg-pink-600 absolute left-[-2rem] top-[1.7rem] rounded rotate-[-17deg] z-10 tablet:hidden"></div>
           </div>
 
-          <div className="w-[70%] tablet:flex-col">
+          <div className="w-[70%] tablet:w-10/12 tablet:flex tablet:flex-col tablet:items-center tablet:text-center tablet:gap-4">
             <div className="flex items-center justify-between w-[22rem] tablet:flex-col">
               <h2 className="text-lg">Wimple Auto Transport</h2>
               <div className="h-[0.18rem] w-28 bg-[#b3002d]"></div>
@@ -102,11 +102,11 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
-      <section className="w-full flex flex-col ft-center mb-32 mt-44">
+      <section className="w-full flex flex-col ft-center mb-32 mt-44 tablet:h-auto">
         <div className="w-[67%] h-auto">
           <h1 className="font-bold text-4xl">Why Choose Us?</h1>
         </div>
-        <div className="w-[67%] h-[34rem] grid grid-cols-[2fr_1.2fr_2fr]">
+        <div className="w-[67%] h-[34rem] grid grid-cols-[2fr_1.2fr_2fr] tablet:grid-cols-[1fr] tablet:grid-rows-[repeat(6,250px)] tablet:w-full tablet:h-auto">
           <WhyChooseUs
             whyChooseUsImageAlt={"price tag icon"}
             whyChooseUsPng={price}
@@ -115,7 +115,7 @@ const AboutUs = () => {
               "Wimple offers the most competitive prices in the market compared to other companies."
             }
           />
-          <div className="row-span-3 self-center">
+          <div className="row-span-3 self-center tablet:hidden">
             <img src={aboutusguy} alt="a guy" />
           </div>
           <WhyChooseUs
@@ -161,7 +161,7 @@ const AboutUs = () => {
         </div>
       </section>
       <section className="w-full mb-32">
-        <div className="w-[67%] text-center mx-auto">
+        <div className="w-[67%] text-center mx-auto tablet:w-full">
           <h1 className="font-bold text-4xl mb-8">
             Get your discounted qutoe now!
           </h1>

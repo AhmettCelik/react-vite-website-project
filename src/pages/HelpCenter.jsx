@@ -19,13 +19,13 @@ const HelpCenterBtns = ({ icon, helpCenter_h3, helpCenter_p, customClass }) => {
 
 const HelpCenter = () => {
   return (
-    <div className="h-screen bg-[#ededed] ">
+    <div className="h-screen bg-[#ededed] tablet:h-full tablet:py-32">
       <div className="h-full flex flex-col justify-evenly items-center mt-8">
         <h1 className="font-bold text-4xl">How can we help you?</h1>
         <div>
           <Faqs />
         </div>
-        <div className="flex justify-between h-auto w-2/6">
+        <div className="flex justify-between h-auto w-2/6 tablet:flex-col tablet:gap-4 tablet:mt-12 tablet:w-5/6 tablet:text-center">
           <HelpCenterBtns
             icon={faPhone}
             helpCenter_h3="Call Us"

@@ -29,10 +29,14 @@ export default {
       },
 
       screens: {
+        "min-mobileM": { min: "376px" },
         "min-tablet": { min: "769px" },
+        "min-laptopL": { min: "1441px" },
         tablet: { max: "768px" },
         mobileL: { max: "425px" },
         mobileM: { max: "375px" },
+        laptop: { max: "1024px" },
+        laptopL: { max: "1440px" },
       },
     },
   },

@@ -28,10 +28,10 @@ const Header = () => {
     <header>
       <section
         id="header-first-section"
-        className="w-full bg-white fixed z-50 top-0"
+        className="w-full bg-white fixed z-50 top-0 mobileM:w-full"
       >
-        <div className="flex flex-row justify-between items-center w-70 tablet:w-full mx-auto h-16">
-          <div className="flex items-center justify-between w-6/12 tablet:w-11/12 tablet:mx-auto">
+        <div className="flex justify-between items-center w-70 tablet:w-full mx-auto h-16 tablet:justify-center">
+          <div className="flex items-center justify-between w-6/12 tablet:w-11/12 mobileM:mx-0">
             <section>
               <Link
                 to="/"
@@ -95,8 +95,9 @@ const Header = () => {
               </section>
             </div>
           </section>
+          {/*Mobile first header dropdown section*/}
           <section className="ml-40 tablet:hidden">
-            <BackToTopBtn padding={{ paddingY: "0.5rem", paddingX: "1rem" }} />
+            <BackToTopBtn padding={{ paddingY: "0.5rem", paddingX: "2rem" }} />
           </section>
           <div className="flex items-center justify-between w-[23%] tablet:hidden">
             <section className="mr-6 text-lg">
@@ -114,7 +115,7 @@ const Header = () => {
       >
         <div className="w-70 tablet:w-full mx-auto h-12 tablet:h-8 flex items-center">
           <nav className="w-5/12 tablet:w-full">
-            <ul className="text-white text-lg tablet:text-[0.8rem] w-full flex justify-between tablet:justify-around">
+            <ul className="text-white text-lg tablet:text-[0.8rem] mobileM:text-[0.7rem] w-full flex justify-between tablet:justify-around">
               <Links to="/comparequotes" content="Compare Quotes" />
               <Links to="/helpcenter" content="Help Center" />
               <Links to="/trackshipment" content="Track a Shipment" />

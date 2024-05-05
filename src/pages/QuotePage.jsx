@@ -73,14 +73,14 @@ const QuotePage = () => {
           {/*Map Section*/}
           {/*Information Section*/}
           <section className="bg-white rounded-lg h-full w-[97%] flex f-center">
-            <div className="w-[87%] h-5/6">
-              <h1 className="font-bold">Summary</h1>
+            <div className="w-[87%] h-full mt-4">
+              <h1 className="font-bold mb-4 text-2xl">Summary</h1>
               <div className="w-full h-20 border-[1px] border-solid border-slate-400 rounded-lg flex flex-col ft-center">
                 <h2 className="font-bold">Vehicle</h2>
                 <p className="opacity-55">Vehicle Model</p>
               </div>
-              <div className="w-[72%] h-4/6 flex">
-                <div>
+              <div className="w-[60%] h-4/6 flex justify-between mt-2">
+                <div className="font-bold flex flex-col gap-2">
                   <p>Distance</p>
                   <p>Shipment Date</p>
                   <p>Origin</p>
@@ -88,7 +88,7 @@ const QuotePage = () => {
                   <p>Vehicle Condition</p>
                   <p>Transport Type</p>
                 </div>
-                <div className="opacity-55">
+                <div className="opacity-55 flex flex-col gap-2">
                   <p>mesafe</p>
                   <p>zaman</p>
                   <p>Nereden</p>
@@ -115,7 +115,7 @@ const QuotePage = () => {
                 <input
                   type="text"
                   placeholder="Ex. SAVE20"
-                  className="outline-none rounded my-3 py-2 w-5/12"
+                  className="outline-none rounded my-3 py-2 px-2 w-5/12 border-[1px] border-solid border-slate-200"
                 />
                 <button className="text-white bg-green-400 my-3 px-3 rounded-lg font-normal">
                   Apply Code

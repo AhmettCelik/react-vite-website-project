@@ -254,13 +254,18 @@ const Step_3 = ({ display }) => {
           className="p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500"
         >
           <option value="Model">Model</option>
+          {models.map((model, index) => (
+            <option key={index} value={model}>
+              {model}
+            </option>
+          ))}
         </select>
       </form>
     </div>
   );
 };
 
-const Step_4 = ({ display, count, increment, decrement }) => {
+const Step_4 = ({ display }) => {
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}

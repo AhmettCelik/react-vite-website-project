@@ -188,7 +188,7 @@ const ChatUsBox = ({ display }) => {
   }, [messages]);
   return (
     <div
-      className={`custom-chat-us fixed bottom-[7rem] right-8 bg-white rounded-xl h-[75%] w-[25rem] duration-[0.5s] ${display}`}
+      className={`custom-chat-us fixed bottom-[7rem] right-8 bg-white rounded-xl h-[75%] w-[25rem] tablet:h-[85%] tablet:w-full tablet:top-0 tablet:right-0 duration-[0.5s] ${display}`}
     >
       <section className="custom-chat-us-first-section w-full h-[21%] bg-[#ba0000] flex flex-col items-center justify-evenly">
         <div className="bg-[#a60000] w-auto flex ft-center px-7 py-[0.4rem] rounded-3xl text-white gap-2">

@@ -130,7 +130,7 @@ const QuotePage = () => {
         </section>
         {/*Main Section*/}
       </main>
-      <section className="h-auto w-4/6 mx-auto">
+      <section className="h-auto w-4/6 mx-auto pb-16">
         <div className="h-2/6 flex justify-center items-end">
           <h1 className="text-5xl font-bold">
             Trusted by Customers from All Over Country

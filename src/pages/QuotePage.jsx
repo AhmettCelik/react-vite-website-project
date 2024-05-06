@@ -3,6 +3,7 @@ import Reviews from "../components/Reviews";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import Imformation from "../components/Imformation";
 
 const PriceLiTags = ({ content }) => {
   return (
@@ -71,35 +72,7 @@ const QuotePage = () => {
             <div className="h-5/6 w-full bg-white shadow-xl rounded-sm tablet:h-5/6 tablet:mt-4"></div>
           </section>
           {/*Map Section*/}
-          {/*Information Section*/}
-          <section className="bg-white rounded-lg h-full w-[97%] flex f-center tablet:justify-self-center">
-            <div className="w-[87%] h-full mt-4">
-              <h1 className="font-bold mb-4 text-2xl">Summary</h1>
-              <div className="w-full h-20 border-[1px] border-solid border-slate-400 rounded-lg flex flex-col ft-center">
-                <h2 className="font-bold">Vehicle</h2>
-                <p className="opacity-55">Vehicle Model</p>
-              </div>
-              <div className="w-[60%] h-4/6 flex justify-between mt-2">
-                <div className="font-bold flex flex-col gap-2">
-                  <p>Distance</p>
-                  <p>Shipment Date</p>
-                  <p>Origin</p>
-                  <p>Destination</p>
-                  <p>Vehicle Condition</p>
-                  <p>Transport Type</p>
-                </div>
-                <div className="opacity-55 flex flex-col gap-2">
-                  <p>mesafe</p>
-                  <p>zaman</p>
-                  <p>Nereden</p>
-                  <p>Nereye</p>
-                  <p>araç durumu</p>
-                  <p>araç tipi</p>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/*Information Section*/}
+          <Imformation className={"w-[97%]"} />
           {/*Continue Section*/}
           <section className="bg-white rounded-lg w-full h-4/6 tablet:h-full flex f-center tablet:self-center">
             <div className="h-5/6 w-11/12 tablet:h-full tablet:flex tablet:flex-col tablet:gap-2 tablet:mt-8">

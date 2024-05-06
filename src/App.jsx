@@ -13,6 +13,7 @@ import TermsConditions from "./pages/TermsConditions";
 import Footer from "./components/Footer";
 import ChatUs from "./components/ChatUs";
 import QuotePage from "./pages/QuotePage";
+import Payment from "./pages/Payment";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/termsandconditions" element={<TermsConditions />} />
         <Route path="/quotepage" element={<QuotePage />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />

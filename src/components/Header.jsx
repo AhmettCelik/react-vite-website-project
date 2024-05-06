@@ -99,7 +99,7 @@ const Header = () => {
           <section className="ml-40 tablet:hidden">
             <BackToTopBtn padding={{ paddingY: "0.5rem", paddingX: "2rem" }} />
           </section>
-          <div className="flex items-center justify-between w-[23%] tablet:hidden">
+          <div className="flex items-center justify-end w-[23%] tablet:hidden">
             <section className="mr-6 text-lg">
               <a className="mr-2" href="">
                 (888) 491-7162

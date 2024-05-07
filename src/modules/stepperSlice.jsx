@@ -5,6 +5,7 @@ const initialState = {
     fromCity: "",
     toCity: "",
     selectedBrand: "",
+    selectedModel: "",
   },
 };
 
@@ -23,6 +24,10 @@ export const stepperSlice = createSlice({
     handleBrandChange: (state, action) => {
       state.formValues.selectedBrand = action.payload;
     },
+
+    handleModelValueChange: (state, action) => {
+      state.formValues.selectedModel = action.payload;
+    },
   },
 });
 
@@ -30,5 +35,6 @@ export const {
   handleOnChangeFromCity,
   handleOnChangeToCity,
   handleBrandChange,
+  handleModelValueChange,
 } = stepperSlice.actions;
 export default stepperSlice.reducer;

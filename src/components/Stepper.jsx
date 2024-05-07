@@ -6,6 +6,7 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import {
   handleBrandChange,
+  handleModelValueChange,
   handleOnChangeFromCity,
   handleOnChangeToCity,
 } from "../modules/stepperSlice";
@@ -203,9 +204,23 @@ const BASE_URL = "http://localhost:3005";
 
 const Step_3 = ({ display }) => {
   const dispatch = useDispatch();
-  const brandValue = useSelector(
+  let brandValue = useSelector(
     (store) => store.stepper.formValues.selectedBrand
   );
+
+  let modelValue = useSelector(
+    (store) => store.stepper.formValues.selectedModel
+  );
+
+  const assignSelectedOptionToBrandValue = (e) => {
+    const selectedOption = e.currentTarget.querySelector("option:checked");
+    brandValue = selectedOption.value;
+  };
+
+  const assignSelectedOptionToModelValue = (e) => {
+    const selectedOption = e.currentTarget.querySelector("option:checked");
+    modelValue = selectedOption.value;
+  };
 
   const [brands, setBrands] = useState([]);
   const [models, setModels] = useState([]);
@@ -225,8 +240,14 @@ const Step_3 = ({ display }) => {
   };
 
   const handleMakeChange = (e) => {
+    assignSelectedOptionToBrandValue(e);
     dispatch(handleBrandChange(e.target.value));
     getModels();
+  };
+
+  const handleModelChange = (e) => {
+    assignSelectedOptionToModelValue(e);
+    dispatch(handleModelValueChange(e.target.value));
   };
 
   useEffect(() => {
@@ -257,6 +278,8 @@ const Step_3 = ({ display }) => {
         <select
           name="model"
           id="model"
+          onChange={handleModelChange}
+          value={modelValue}
           className="p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500"
         >
           <option value="Model">Model</option>

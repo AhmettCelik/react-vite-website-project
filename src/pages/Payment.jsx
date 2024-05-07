@@ -51,7 +51,46 @@ const InfoSection = () => {
             />
             <label
               htmlFor="full-name"
-              className="paymentPlaceholder absolute top-[0.4rem] left-1 px-1 duration-[0.3s] opacity-55 text-sm"
+              className="paymentPlaceholder absolute top-[0.4rem] left-1 px-1 duration-[0.3s] opacity-55 text-sm pointer-events-none"
+            >
+              Full name
+            </label>
+          </div>
+          <div className="relative">
+            <input
+              type="email"
+              id="email"
+              className="input outline-none px-2 py-1 rounded"
+            />
+            <label
+              htmlFor="email"
+              className="paymentPlaceholder absolute top-[0.4rem] left-1 px-1 duration-[0.3s] opacity-55 text-sm pointer-events-none"
+            >
+              Email
+            </label>
+          </div>
+          <div className="relative">
+            <input
+              type="text"
+              id="phone-number"
+              className="input outline-none px-2 py-1 rounded"
+            />
+            <label
+              htmlFor="phone-number"
+              className="paymentPlaceholder absolute top-[0.4rem] left-1 px-1 duration-[0.3s] opacity-55 text-sm pointer-events-none"
+            >
+              Phone number
+            </label>
+          </div>
+          <div className="relative">
+            <input
+              type="text"
+              id="extra-phone-number"
+              className="input outline-none px-2 py-1 rounded"
+            />
+            <label
+              htmlFor="extra-phone-number"
+              className="paymentPlaceholder absolute top-[0.4rem] left-1 px-1 duration-[0.3s] opacity-55 text-sm pointer-events-none"
             >
               Full name
             </label>

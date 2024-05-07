@@ -97,7 +97,7 @@ const SubSection = (props) => {
   );
 };
 
-const Step_1 = ({ display }) => {
+const Step_1 = ({ display, validationVisibility, firstFormMarginBottom }) => {
   const [firstPlaceholderDisplay, setFirstPlaceholderDisplay] = useState(
     "top-[0.5rem] left-1 text-md text-slate-400"
   );
@@ -138,7 +138,7 @@ const Step_1 = ({ display }) => {
       </p>
 
       <div className="form w-10/12 mt-2 flex flex-col gap-4">
-        <div className="input-group relative">
+        <div className={`input-group relative ${firstFormMarginBottom}`}>
           <input
             value={fromCityValue}
             onChange={handleChangeFromCity}
@@ -152,10 +152,13 @@ const Step_1 = ({ display }) => {
           >
             From (ZIP or City)
           </label>
+          <p
+            className={`text-[0.7rem] font-normal absolute text-[#b3002d] ${validationVisibility}`}
+          >
+            Enter valid City or ZIP
+          </p>
         </div>
-        <p className="text-[0.7rem] font-normal hidden">
-          Enter valid City or ZIP
-        </p>
+
         <div className="input-group relative">
           <input
             value={toCityValue}
@@ -170,6 +173,11 @@ const Step_1 = ({ display }) => {
           >
             To (ZIP or City)
           </label>
+          <p
+            className={`text-[0.7rem] font-normal absolute text-[#b3002d] ${validationVisibility}`}
+          >
+            Enter valid City or ZIP
+          </p>
         </div>
       </div>
     </div>
@@ -219,8 +227,6 @@ const Step_3 = ({ display }) => {
   const handleMakeChange = (e) => {
     dispatch(handleBrandChange(e.target.value));
     getModels();
-    console.log(models);
-    console.log(brandValue);
   };
 
   useEffect(() => {
@@ -294,6 +300,8 @@ const Step_5 = ({ display, count, increment, decrement }) => {
 const Stepper = () => {
   const stepperState = useSelector((store) => store.stepper);
   const [count, setCount] = useState(1);
+  const [validationVisibility, setValidationVisibility] = useState("invisible");
+  const [firstFormMarginBottom, setFirstFormMarginBottom] = useState("");
   const subSectionFirstSecondParagraphContent =
     "No credit card required! Schedule and save money now.";
   const subSectionThirdParagraphContent = "Shipping multiple cars?";
@@ -302,15 +310,38 @@ const Stepper = () => {
     "By continuing, you agree to our ";
   const subSectionFifthParagraphSecondContent = " and acknowledge ";
 
+  const [citiesArr, setCitiesArr] = useState([]);
+
+  const getAllCitiesFromDatabase = async () => {
+    const cityResponse = await axios.get(`${BASE_URL}/cities`);
+    const citiesData = cityResponse.data.map((city) => city.name);
+    setCitiesArr(citiesData);
+  };
+
   const increment = () => {
-    if (stepperState.formValues.fromCity) {
+    if (stepperState.formValues.fromCity == stepperState.formValues.toCity) {
+      setValidationVisibility("visible");
+      setFirstFormMarginBottom("mb-3");
+    } else if (
+      citiesArr.includes(stepperState.formValues.fromCity) &&
+      citiesArr.includes(stepperState.formValues.toCity)
+    ) {
+      count < 5 && setCount(count + 1);
+      setValidationVisibility("invisible");
+      setFirstFormMarginBottom("");
+    } else {
+      setFirstFormMarginBottom("mb-3");
+      setValidationVisibility("visible");
     }
-    count < 5 && setCount(count + 1);
   };
 
   const decrement = () => {
     count > 1 && setCount(count - 1);
   };
+
+  useEffect(() => {
+    getAllCitiesFromDatabase();
+  }, []);
 
   return (
     <div className="w-full h-auto flex flex-col items-center justify-evenly">
@@ -351,6 +382,8 @@ const Stepper = () => {
         decrement={decrement}
         display={count === 1 ? "flex" : "hidden"}
         count={count}
+        validationVisibility={validationVisibility}
+        firstFormMarginBottom={firstFormMarginBottom}
       />
       <Step_2
         increment={increment}

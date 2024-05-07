@@ -9,6 +9,7 @@ import {
   handleModelValueChange,
   handleOnChangeFromCity,
   handleOnChangeToCity,
+  handleSelectedCarYearValue,
 } from "../modules/stepperSlice";
 
 const FormElementButtons = ({ content }) => {
@@ -22,6 +23,15 @@ const FormElementButtons = ({ content }) => {
 };
 
 const YearOptions = () => {
+  const dispatch = useDispatch();
+  let carYearValue = useSelector(
+    (store) => store.stepper.formValues.selectedCarYear
+  );
+
+  const handleChangeYear = (e) => {
+    dispatch(handleSelectedCarYearValue(e.target.value));
+  };
+
   const options = [];
   for (let year = 2024; year >= 1896; year--) {
     options.push(
@@ -32,7 +42,11 @@ const YearOptions = () => {
   }
 
   return (
-    <select className="p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500">
+    <select
+      value={carYearValue}
+      onChange={handleChangeYear}
+      className="p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500"
+    >
       <option value="">Year</option>
       {options}
     </select>
@@ -106,14 +120,13 @@ const Step_1 = ({ display, validationVisibility, firstFormMarginBottom }) => {
     "top-[0.5rem] left-1 text-md text-slate-400"
   );
   const dispatch = useDispatch();
-  const fromCityValue = useSelector(
-    (store) => store.stepper.formValues.fromCity
-  );
-  const toCityValue = useSelector((store) => store.stepper.formValues.toCity);
+  let fromCityValue = useSelector((store) => store.stepper.formValues.fromCity);
+  let toCityValue = useSelector((store) => store.stepper.formValues.toCity);
 
   const handleChangeFromCity = (e) => {
+    fromCityValue = e.target.value;
     dispatch(handleOnChangeFromCity(e.target.value));
-    fromCityValue !== ""
+    e.target.value !== ""
       ? setFirstPlaceholderDisplay("top-[-0.6rem] left-[0.6rem] text-[0.8rem]")
       : setFirstPlaceholderDisplay(
           "top-[0.5rem] left-1 text-md text-slate-400"
@@ -121,8 +134,9 @@ const Step_1 = ({ display, validationVisibility, firstFormMarginBottom }) => {
   };
 
   const handleChangeToCity = (e) => {
+    toCityValue = e.target.value;
     dispatch(handleOnChangeToCity(e.target.value));
-    toCityValue !== ""
+    e.target.value !== ""
       ? setSecondPlaceholderDisplay("top-[-0.6rem] left-[0.6rem] text-[0.8rem]")
       : setSecondPlaceholderDisplay(
           "top-[0.5rem] left-1 text-md text-slate-400"
@@ -307,7 +321,7 @@ const Step_4 = ({ display }) => {
   );
 };
 
-const Step_5 = ({ display, count, increment, decrement }) => {
+const Step_5 = ({ display }) => {
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
@@ -401,37 +415,14 @@ const Stepper = () => {
         />
       </div>
       <Step_1
-        increment={increment}
-        decrement={decrement}
         display={count === 1 ? "flex" : "hidden"}
-        count={count}
         validationVisibility={validationVisibility}
         firstFormMarginBottom={firstFormMarginBottom}
       />
-      <Step_2
-        increment={increment}
-        decrement={decrement}
-        display={count === 2 ? "flex" : "hidden"}
-        count={count}
-      />
-      <Step_3
-        increment={increment}
-        decrement={decrement}
-        display={count === 3 ? "flex" : "hidden"}
-        count={count}
-      />
-      <Step_4
-        increment={increment}
-        decrement={decrement}
-        display={count === 4 ? "flex" : "hidden"}
-        count={count}
-      />
-      <Step_5
-        increment={increment}
-        decrement={decrement}
-        display={count === 5 ? "flex" : "hidden"}
-        count={count}
-      />
+      <Step_2 display={count === 2 ? "flex" : "hidden"} />
+      <Step_3 display={count === 3 ? "flex" : "hidden"} />
+      <Step_4 display={count === 4 ? "flex" : "hidden"} />
+      <Step_5 display={count === 5 ? "flex" : "hidden"} />
       <div className="w-full flex f-center gap-4 my-4 tablet:my-2 ">
         <StepperBackBtn
           display={count > 1 ? "inline-block" : "hidden"}

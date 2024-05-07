@@ -10,6 +10,8 @@ import {
   handleOnChangeFromCity,
   handleOnChangeToCity,
   handleSelectedCarYearValue,
+  manageFirstSelectElementOfThirdStepStyle,
+  manageSecondSelectElementOfThirdStepStyle,
 } from "../modules/stepperSlice";
 
 const FormElementButtons = ({ content }) => {
@@ -30,6 +32,7 @@ const YearOptions = () => {
 
   const handleChangeYear = (e) => {
     dispatch(handleSelectedCarYearValue(e.target.value));
+    dispatch(manageFirstSelectElementOfThirdStepStyle());
   };
 
   const options = [];
@@ -47,7 +50,7 @@ const YearOptions = () => {
       onChange={handleChangeYear}
       className="p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500"
     >
-      <option value="">Year</option>
+      <option value="Year">Year</option>
       {options}
     </select>
   );
@@ -217,6 +220,13 @@ const Step_2 = ({ display }) => {
 const BASE_URL = "http://localhost:3005";
 
 const Step_3 = ({ display }) => {
+  const firstSelectorValue = useSelector(
+    (store) => store.stepper.stepperStyleClasses.styleOfFirstSelectOfThirdStep
+  );
+
+  const secondSelectorValue = useSelector(
+    (store) => store.stepper.stepperStyleClasses.styleOfSecondSelectOfThirdStep
+  );
   const dispatch = useDispatch();
   let brandValue = useSelector(
     (store) => store.stepper.formValues.selectedBrand
@@ -256,6 +266,7 @@ const Step_3 = ({ display }) => {
   const handleMakeChange = (e) => {
     assignSelectedOptionToBrandValue(e);
     dispatch(handleBrandChange(e.target.value));
+    dispatch(manageSecondSelectElementOfThirdStepStyle());
     getModels();
   };
 
@@ -280,9 +291,8 @@ const Step_3 = ({ display }) => {
           id="make"
           onChange={handleMakeChange}
           value={brandValue}
-          className="p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500"
+          className={`p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500 ${firstSelectorValue}`}
         >
-          <option value="make">Make</option>
           {brands.map((brand) => (
             <option key={brand.id} value={brand.name}>
               {brand.name}
@@ -294,7 +304,7 @@ const Step_3 = ({ display }) => {
           id="model"
           onChange={handleModelChange}
           value={modelValue}
-          className="p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500"
+          className={`p-2 h-10 w-full outline-none rounded-lg duration-[0.2s] focus:border-2 focus:border-solid focus:border-[#b3002d] font-normal text-sm text-slate-500 ${secondSelectorValue}`}
         >
           <option value="Model">Model</option>
           {models.map((model, index) => (

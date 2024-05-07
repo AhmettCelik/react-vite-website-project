@@ -8,6 +8,11 @@ const initialState = {
     selectedModel: "",
     selectedCarYear: "",
   },
+
+  stepperStyleClasses: {
+    styleOfFirstSelectOfThirdStep: "pointer-events-none opacity-40",
+    styleOfSecondSelectOfThirdStep: "pointer-events-none opacity-40",
+  },
 };
 
 export const stepperSlice = createSlice({
@@ -24,6 +29,7 @@ export const stepperSlice = createSlice({
 
     handleBrandChange: (state, action) => {
       state.formValues.selectedBrand = action.payload;
+      console.log(state.formValues.selectedBrand);
     },
 
     handleModelValueChange: (state, action) => {
@@ -32,6 +38,22 @@ export const stepperSlice = createSlice({
 
     handleSelectedCarYearValue: (state, action) => {
       state.formValues.selectedCarYear = action.payload;
+    },
+
+    manageFirstSelectElementOfThirdStepStyle: (state) => {
+      if (state.formValues.selectedCarYear == "Year") {
+        state.stepperStyleClasses.styleOfFirstSelectOfThirdStep =
+          "pointer-events-none opacity-40";
+      } else state.stepperStyleClasses.styleOfFirstSelectOfThirdStep = "";
+    },
+
+    manageSecondSelectElementOfThirdStepStyle: (state) => {
+      console.log("tetiklendi");
+      console.log(state.stepperStyleClasses.styleOfSecondSelectOfThirdStep);
+      if (state.formValues.selectedBrand === "Make") {
+        state.stepperStyleClasses.styleOfSecondSelectOfThirdStep =
+          "pointer-events-none opacity-40";
+      } else state.stepperStyleClasses.styleOfSecondSelectOfThirdStep = "";
     },
   },
 });
@@ -42,5 +64,7 @@ export const {
   handleBrandChange,
   handleModelValueChange,
   handleSelectedCarYearValue,
+  manageFirstSelectElementOfThirdStepStyle,
+  manageSecondSelectElementOfThirdStepStyle,
 } = stepperSlice.actions;
 export default stepperSlice.reducer;

@@ -29,7 +29,6 @@ export const stepperSlice = createSlice({
 
     handleBrandChange: (state, action) => {
       state.formValues.selectedBrand = action.payload;
-      console.log(state.formValues.selectedBrand);
     },
 
     handleModelValueChange: (state, action) => {
@@ -48,8 +47,6 @@ export const stepperSlice = createSlice({
     },
 
     manageSecondSelectElementOfThirdStepStyle: (state) => {
-      console.log("tetiklendi");
-      console.log(state.stepperStyleClasses.styleOfSecondSelectOfThirdStep);
       if (state.formValues.selectedBrand === "Make") {
         state.stepperStyleClasses.styleOfSecondSelectOfThirdStep =
           "pointer-events-none opacity-40";

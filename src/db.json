@@ -15,6 +15,14 @@
     {
       "id": 4,
       "name": "San Diego"
+    },
+    {
+      "id": 5,
+      "name": "Washington"
+    },
+    {
+      "id": 6,
+      "name": "Waco"
     }
   ],
 
@@ -33,7 +41,12 @@
     {
       "id": 3,
       "name": "Mercedes-Benz",
-      "models": ["GLA", "GLB", "GLC"]
+      "models": ["GLA", "GLB", "GLC", "E250", "C180"]
+    },
+    {
+      "id": 4,
+      "name": "Audi",
+      "models": ["RS6", "A3", "Q7", "R8", "TTS", "E-Tron GT"]
     }
   ]
 }

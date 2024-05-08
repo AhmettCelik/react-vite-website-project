@@ -219,7 +219,12 @@ const Step_2 = ({ display }) => {
 
 const BASE_URL = "http://localhost:3005";
 
-const Step_3 = ({ display }) => {
+const Step_3 = ({
+  display,
+  validationModelSelectorVisibility,
+  validationYearSelectorVisibility,
+  validationMakeSelectorVisibility,
+}) => {
   const firstSelectorValue = useSelector(
     (store) => store.stepper.stepperStyleClasses.styleOfFirstSelectOfThirdStep
   );
@@ -286,6 +291,11 @@ const Step_3 = ({ display }) => {
       <p className="font-normal text-[0.95rem] mt-4">Vehicle</p>
       <form className="w-10/12 h-full flex flex-col gap-1">
         <YearOptions />
+        <p
+          className={`font-normal text-[#b3002d] text-[0.7rem] ${validationYearSelectorVisibility}`}
+        >
+          Select Year
+        </p>
         <select
           name="make"
           id="make"
@@ -299,6 +309,11 @@ const Step_3 = ({ display }) => {
             </option>
           ))}
         </select>
+        <p
+          className={`font-normal text-[#b3002d] text-[0.7rem] ${validationMakeSelectorVisibility}`}
+        >
+          Select Make
+        </p>
         <select
           name="model"
           id="model"
@@ -313,6 +328,11 @@ const Step_3 = ({ display }) => {
             </option>
           ))}
         </select>
+        <p
+          className={`font-normal text-[#b3002d] text-[0.7rem] ${validationModelSelectorVisibility}`}
+        >
+          Select Model
+        </p>
       </form>
     </div>
   );
@@ -346,8 +366,20 @@ const Step_5 = ({ display }) => {
 
 const Stepper = () => {
   const stepperState = useSelector((store) => store.stepper);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(2);
   const [validationVisibility, setValidationVisibility] = useState("invisible");
+  const [
+    validationYearSelectorVisibility,
+    setValidationYearSelectorVisibility,
+  ] = useState("hidden");
+  const [
+    validationMakeSelectorVisibility,
+    setValidationMakeSelectorVisibility,
+  ] = useState("hidden");
+  const [
+    validationModelSelectorVisibility,
+    setValidationModelSelectorVisibility,
+  ] = useState("hidden");
   const [firstFormMarginBottom, setFirstFormMarginBottom] = useState("");
   const subSectionFirstSecondParagraphContent =
     "No credit card required! Schedule and save money now.";
@@ -366,19 +398,52 @@ const Stepper = () => {
   };
 
   const increment = () => {
-    if (stepperState.formValues.fromCity == stepperState.formValues.toCity) {
-      setValidationVisibility("visible");
-      setFirstFormMarginBottom("mb-3");
-    } else if (
-      citiesArr.includes(stepperState.formValues.fromCity) &&
-      citiesArr.includes(stepperState.formValues.toCity)
-    ) {
-      count < 5 && setCount(count + 1);
-      setValidationVisibility("invisible");
-      setFirstFormMarginBottom("");
-    } else {
-      setFirstFormMarginBottom("mb-3");
-      setValidationVisibility("visible");
+    if (count === 3) {
+      if (
+        stepperState.formValues.selectedCarYear === "Year" ||
+        stepperState.formValues.selectedCarYear === ""
+      ) {
+        setValidationYearSelectorVisibility("block");
+        setValidationMakeSelectorVisibility("hidden");
+        setValidationModelSelectorVisibility("hidden");
+      } else if (stepperState.formValues.selectedCarYear !== "Year") {
+        setValidationYearSelectorVisibility("hidden");
+        if (
+          stepperState.formValues.selectedBrand === "" ||
+          stepperState.formValues.selectedBrand === "Make"
+        ) {
+          setValidationMakeSelectorVisibility("block");
+          setValidationModelSelectorVisibility("hidden");
+        } else if (stepperState.formValues.selectedBrand !== "Make") {
+          setValidationMakeSelectorVisibility("hidden");
+          if (
+            stepperState.formValues.selectedModel === "" ||
+            stepperState.formValues.selectedModel === "Model"
+          ) {
+            setValidationModelSelectorVisibility("block");
+          } else if (stepperState.formValues.selectedModel !== "Model") {
+            setValidationModelSelectorVisibility("hidden");
+            count === 3 && setCount(count + 1);
+          }
+        }
+      }
+    }
+
+    if (count === 1) {
+      if (stepperState.formValues.fromCity == stepperState.formValues.toCity) {
+        setValidationVisibility("visible");
+        setFirstFormMarginBottom("mb-3");
+      } else if (
+        citiesArr.includes(stepperState.formValues.fromCity) &&
+        citiesArr.includes(stepperState.formValues.toCity)
+      ) {
+        count === 1 && setCount(count + 1);
+        setValidationVisibility("invisible");
+        setFirstFormMarginBottom("");
+      } else {
+        setFirstFormMarginBottom("mb-3");
+        setValidationVisibility("visible");
+      }
     }
   };
 
@@ -430,7 +495,12 @@ const Stepper = () => {
         firstFormMarginBottom={firstFormMarginBottom}
       />
       <Step_2 display={count === 2 ? "flex" : "hidden"} />
-      <Step_3 display={count === 3 ? "flex" : "hidden"} />
+      <Step_3
+        display={count === 3 ? "flex" : "hidden"}
+        validationYearSelectorVisibility={validationYearSelectorVisibility}
+        validationMakeSelectorVisibility={validationMakeSelectorVisibility}
+        validationModelSelectorVisibility={validationModelSelectorVisibility}
+      />
       <Step_4 display={count === 4 ? "flex" : "hidden"} />
       <Step_5 display={count === 5 ? "flex" : "hidden"} />
       <div className="w-full flex f-center gap-4 my-4 tablet:my-2 ">

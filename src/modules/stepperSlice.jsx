@@ -11,6 +11,7 @@ const initialState = {
     condition: "",
     email: "",
     shippingDate: "",
+    date: "",
   },
 
   stepperStyleClasses: {
@@ -65,7 +66,6 @@ export const stepperSlice = createSlice({
 
     handleButtonsOfFourthStep: (state, action) => {
       state.formValues.condition = action.payload;
-      console.log("condition: " + state.formValues.condition);
     },
 
     assignShipmentDate: (state, action) => {
@@ -76,6 +76,15 @@ export const stepperSlice = createSlice({
       } else
         state.stepperStyleClasses.styleOfCustomDateOfFifthStep =
           "pointer-events-none opacity-40";
+    },
+
+    handleDateChange: (state, action) => {
+      state.formValues.date = action.payload;
+    },
+
+    handleEmailChange: (state, action) => {
+      state.formValues.email = action.payload;
+      console.log(state.formValues.email);
     },
   },
 });
@@ -91,5 +100,7 @@ export const {
   handleFirstBtnOfSecondStepClick,
   handleButtonsOfFourthStep,
   assignShipmentDate,
+  handleDateChange,
+  handleEmailChange,
 } = stepperSlice.actions;
 export default stepperSlice.reducer;

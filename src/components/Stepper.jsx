@@ -15,6 +15,8 @@ import {
   handleFirstBtnOfSecondStepClick,
   handleButtonsOfFourthStep,
   assignShipmentDate,
+  handleDateChange,
+  handleEmailChange,
 } from "../modules/stepperSlice";
 
 const FormElementButtons = ({ content }) => {
@@ -102,13 +104,19 @@ const StepperStep = ({
   );
 };
 
-const StepperContinueBtn = ({ widthOfContinue, onClickFunctionProp }) => {
+const StepperContinueBtn = ({
+  widthOfContinue,
+  onClickFunctionProp,
+  count,
+}) => {
+  const [contentContinue, setContentContinue] = useState("Continue");
+  const [contentGetQuote, setContentGetQuote] = useState("Get your quote");
   return (
     <button
       onClick={onClickFunctionProp}
       className={`bg-green-500 hover:bg-green-400 ${widthOfContinue} h-10 rounded-lg text-white font-normal`}
     >
-      Continue
+      {count === 5 ? contentGetQuote : contentContinue}
       <FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: "0.5rem" }} />
     </button>
   );
@@ -390,12 +398,25 @@ const Step_4 = ({ display, validationOfFourthStep }) => {
   );
 };
 
-const Step_5 = ({ display }) => {
+const Step_5 = ({
+  display,
+  validationOfShipmentDate,
+  validationOfDateInput,
+  validationOfEmail,
+}) => {
   const stepperState = useSelector((store) => store.stepper);
   const dispatch = useDispatch();
   const handleSelectChange = (e) => {
     let selectedOption = e.currentTarget.querySelector("option:checked");
     dispatch(assignShipmentDate(selectedOption.value));
+  };
+
+  const handleDateInputChange = (e) => {
+    dispatch(handleDateChange(e.target.value));
+  };
+
+  const handleEmailInputChange = (e) => {
+    dispatch(handleEmailChange(e.target.value));
   };
   return (
     <div
@@ -410,10 +431,16 @@ const Step_5 = ({ display }) => {
       </section>
       <section className="flex flex-col mt-2 gap-1 w-[85%] font-normal">
         <input
+          onChange={handleEmailInputChange}
           type="email"
           placeholder="Email"
           className="py-[0.3rem] outline-none border-[1px] border-solid border-slate-200 pl-1 rounded"
         />
+        <p
+          className={`font-normal text-[0.7rem] text-[#b3002d] ${validationOfEmail}`}
+        >
+          Enter a Email
+        </p>
         <select
           name="shipping-date"
           onChange={handleSelectChange}
@@ -425,10 +452,21 @@ const Step_5 = ({ display }) => {
           <option value="Within 2 weeks">Within 2 weeks</option>
           <option value="Custom">Custom</option>
         </select>
+        <p
+          className={`font-normal text-[0.7rem] text-[#b3002d] ${validationOfShipmentDate}`}
+        >
+          Select Shipping date
+        </p>
         <input
+          onChange={handleDateInputChange}
           type="date"
           className={`outline-none py-[0.3rem] pl-1 border-[1px] border-solid border-slate-200 ${stepperState.stepperStyleClasses.styleOfCustomDateOfFifthStep}`}
         />
+        <p
+          className={`font-normal text-[0.7rem] text-[#b3002d] ${validationOfDateInput}`}
+        >
+          Select Shipping Date
+        </p>
       </section>
     </div>
   );
@@ -454,6 +492,10 @@ const Stepper = () => {
     useState("hidden");
   const [validationOfFourthStep, setValidationOfFourthStep] =
     useState("hidden");
+  const [validationOfShipmentDate, setValidationOfShipmentDate] =
+    useState("hidden");
+  const [validationOfEmail, setValidationOfEmail] = useState("hidden");
+  const [validationOfDateInput, setValidationOfDateInput] = useState("hidden");
   const [firstFormMarginBottom, setFirstFormMarginBottom] = useState("");
   const subSectionFirstSecondParagraphContent =
     "No credit card required! Schedule and save money now.";
@@ -537,6 +579,27 @@ const Stepper = () => {
         setValidationOfFourthStep("hidden");
       }
     }
+
+    if (count === 5) {
+      if (
+        stepperState.formValues.shippingDate === "" ||
+        stepperState.formValues.shippingDate === "Shipping date"
+      ) {
+        setValidationOfShipmentDate("block");
+      } else if (stepperState.formValues.shippingDate === "Custom") {
+        setValidationOfShipmentDate("hidden");
+        if (stepperState.formValues.date === "") {
+          setValidationOfDateInput("block");
+        } else setValidationOfDateInput("hidden");
+      } else setValidationOfShipmentDate("hidden");
+
+      if (
+        !stepperState.formValues.email.includes("@gmail.com") ||
+        stepperState.formValues.email === ""
+      ) {
+        setValidationOfEmail("block");
+      } else setValidationOfEmail("hidden");
+    }
   };
 
   const decrement = () => {
@@ -600,7 +663,12 @@ const Stepper = () => {
         display={count === 4 ? "flex" : "hidden"}
         validationOfFourthStep={validationOfFourthStep}
       />
-      <Step_5 display={count === 5 ? "flex" : "hidden"} />
+      <Step_5
+        display={count === 5 ? "flex" : "hidden"}
+        validationOfShipmentDate={validationOfShipmentDate}
+        validationOfDateInput={validationOfDateInput}
+        validationOfEmail={validationOfEmail}
+      />
       <div className="w-full flex f-center gap-4 my-4 tablet:my-2 ">
         <StepperBackBtn
           display={count > 1 ? "inline-block" : "hidden"}
@@ -609,6 +677,7 @@ const Stepper = () => {
         <StepperContinueBtn
           widthOfContinue={count === 1 ? "w-10/12" : "w-5/12"}
           onClickFunctionProp={increment}
+          count={count}
         />
       </div>
       <SubSection

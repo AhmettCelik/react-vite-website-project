@@ -163,7 +163,7 @@ const AboutUs = () => {
       <section className="w-full mb-32">
         <div className="w-[67%] text-center mx-auto tablet:w-full">
           <h1 className="font-bold text-4xl mb-8">
-            Get your discounted qutoe now!
+            Get your discounted quote now!
           </h1>
           <BackToTopBtn
             padding={{ paddingY: "0.5rem", paddingX: "3rem" }}

@@ -12,12 +12,39 @@ import {
   handleSelectedCarYearValue,
   manageFirstSelectElementOfThirdStepStyle,
   manageSecondSelectElementOfThirdStepStyle,
+  handleFirstBtnOfSecondStepClick,
+  handleButtonsOfFourthStep,
+  assignShipmentDate,
 } from "../modules/stepperSlice";
 
 const FormElementButtons = ({ content }) => {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(handleFirstBtnOfSecondStepClick(content));
+  };
   return (
     <div>
-      <button className="p-2 h-10 w-full outline-none border-[0.1rem] rounded-lg border-solid border-[#b3002d] focus:bg-[#b3002d] focus:text-white duration-[0.2s]">
+      <button
+        onClick={handleClick}
+        className="p-2 h-10 w-full outline-none border-[0.1rem] rounded-lg border-solid border-[#b3002d] focus:bg-[#b3002d] focus:text-white duration-[0.2s]"
+      >
+        {content}
+      </button>
+    </div>
+  );
+};
+
+const FormElementButtonsOfFourthStep = ({ content }) => {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(handleButtonsOfFourthStep(content));
+  };
+  return (
+    <div>
+      <button
+        onClick={handleClick}
+        className="p-2 h-10 w-full outline-none border-[0.1rem] rounded-lg border-solid border-[#b3002d] focus:bg-[#b3002d] focus:text-white duration-[0.2s]"
+      >
         {content}
       </button>
     </div>
@@ -202,7 +229,7 @@ const Step_1 = ({ display, validationVisibility, firstFormMarginBottom }) => {
   );
 };
 
-const Step_2 = ({ display }) => {
+const Step_2 = ({ display, validationOfSecondStep }) => {
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
@@ -212,6 +239,11 @@ const Step_2 = ({ display }) => {
       <section className="form w-10/12 mt-2 flex flex-col gap-4">
         <FormElementButtons content={"Open"} />
         <FormElementButtons content={"Enclosed"} />
+        <p
+          className={`font-normal text-[0.7rem] text-[#b3002d] ${validationOfSecondStep}`}
+        >
+          Select Transport Type
+        </p>
       </section>
     </div>
   );
@@ -338,20 +370,33 @@ const Step_3 = ({
   );
 };
 
-const Step_4 = ({ display }) => {
+const Step_4 = ({ display, validationOfFourthStep }) => {
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
     >
-      <p className="font-normal text-[0.95rem] mt-4">
-        Get an <strong>instant</strong> & <strong>free quote</strong> or call
-        (888) 491-7162
-      </p>
+      <p className="text-[0.95rem] mt-3">Transport Type</p>
+
+      <section className="form w-10/12 mt-2 flex flex-col gap-4">
+        <FormElementButtonsOfFourthStep content={"Runs and drives"} />
+        <FormElementButtonsOfFourthStep content={"Non-running"} />
+        <p
+          className={`font-normal text-[0.7rem] text-[#b3002d] ${validationOfFourthStep}`}
+        >
+          Select Condition
+        </p>
+      </section>
     </div>
   );
 };
 
 const Step_5 = ({ display }) => {
+  const stepperState = useSelector((store) => store.stepper);
+  const dispatch = useDispatch();
+  const handleSelectChange = (e) => {
+    let selectedOption = e.currentTarget.querySelector("option:checked");
+    dispatch(assignShipmentDate(selectedOption.value));
+  };
   return (
     <div
       className={`w-full basis-7/12 flex flex-col justify-evenly text-center items-center ${display}`}
@@ -360,13 +405,38 @@ const Step_5 = ({ display }) => {
         Get an <strong>instant</strong> & <strong>free quote</strong> or call
         (888) 491-7162
       </p>
+      <section>
+        <p>Information</p>
+      </section>
+      <section className="flex flex-col mt-2 gap-1 w-[85%] font-normal">
+        <input
+          type="email"
+          placeholder="Email"
+          className="py-[0.3rem] outline-none border-[1px] border-solid border-slate-200 pl-1 rounded"
+        />
+        <select
+          name="shipping-date"
+          onChange={handleSelectChange}
+          id="shipping-date"
+          className="py-[0.3rem] pl-1 bg-transparent border-[1px] border-solid border-slate-200 rounded outline-none"
+        >
+          <option value="Shipping date">Shipping date</option>
+          <option value="As soon as poosible">As soon as possible</option>
+          <option value="Within 2 weeks">Within 2 weeks</option>
+          <option value="Custom">Custom</option>
+        </select>
+        <input
+          type="date"
+          className={`outline-none py-[0.3rem] pl-1 border-[1px] border-solid border-slate-200 ${stepperState.stepperStyleClasses.styleOfCustomDateOfFifthStep}`}
+        />
+      </section>
     </div>
   );
 };
 
 const Stepper = () => {
   const stepperState = useSelector((store) => store.stepper);
-  const [count, setCount] = useState(2);
+  const [count, setCount] = useState(5);
   const [validationVisibility, setValidationVisibility] = useState("invisible");
   const [
     validationYearSelectorVisibility,
@@ -380,6 +450,10 @@ const Stepper = () => {
     validationModelSelectorVisibility,
     setValidationModelSelectorVisibility,
   ] = useState("hidden");
+  const [validationOfSecondStep, setValidationOfSecondStep] =
+    useState("hidden");
+  const [validationOfFourthStep, setValidationOfFourthStep] =
+    useState("hidden");
   const [firstFormMarginBottom, setFirstFormMarginBottom] = useState("");
   const subSectionFirstSecondParagraphContent =
     "No credit card required! Schedule and save money now.";
@@ -398,6 +472,32 @@ const Stepper = () => {
   };
 
   const increment = () => {
+    if (count === 1) {
+      if (stepperState.formValues.fromCity == stepperState.formValues.toCity) {
+        setValidationVisibility("visible");
+        setFirstFormMarginBottom("mb-3");
+      } else if (
+        citiesArr.includes(stepperState.formValues.fromCity) &&
+        citiesArr.includes(stepperState.formValues.toCity)
+      ) {
+        count === 1 && setCount(count + 1);
+        setValidationVisibility("invisible");
+        setFirstFormMarginBottom("");
+      } else {
+        setFirstFormMarginBottom("mb-3");
+        setValidationVisibility("visible");
+      }
+    }
+
+    if (count === 2) {
+      if (stepperState.formValues.transportType === "") {
+        setValidationOfSecondStep("block");
+      } else {
+        setCount(count + 1);
+        setValidationOfSecondStep("hidden");
+      }
+    }
+
     if (count === 3) {
       if (
         stepperState.formValues.selectedCarYear === "Year" ||
@@ -429,20 +529,12 @@ const Stepper = () => {
       }
     }
 
-    if (count === 1) {
-      if (stepperState.formValues.fromCity == stepperState.formValues.toCity) {
-        setValidationVisibility("visible");
-        setFirstFormMarginBottom("mb-3");
-      } else if (
-        citiesArr.includes(stepperState.formValues.fromCity) &&
-        citiesArr.includes(stepperState.formValues.toCity)
-      ) {
-        count === 1 && setCount(count + 1);
-        setValidationVisibility("invisible");
-        setFirstFormMarginBottom("");
+    if (count === 4) {
+      if (stepperState.formValues.condition === "") {
+        setValidationOfFourthStep("block");
       } else {
-        setFirstFormMarginBottom("mb-3");
-        setValidationVisibility("visible");
+        setCount(count + 1);
+        setValidationOfFourthStep("hidden");
       }
     }
   };
@@ -494,14 +586,20 @@ const Stepper = () => {
         validationVisibility={validationVisibility}
         firstFormMarginBottom={firstFormMarginBottom}
       />
-      <Step_2 display={count === 2 ? "flex" : "hidden"} />
+      <Step_2
+        display={count === 2 ? "flex" : "hidden"}
+        validationOfSecondStep={validationOfSecondStep}
+      />
       <Step_3
         display={count === 3 ? "flex" : "hidden"}
         validationYearSelectorVisibility={validationYearSelectorVisibility}
         validationMakeSelectorVisibility={validationMakeSelectorVisibility}
         validationModelSelectorVisibility={validationModelSelectorVisibility}
       />
-      <Step_4 display={count === 4 ? "flex" : "hidden"} />
+      <Step_4
+        display={count === 4 ? "flex" : "hidden"}
+        validationOfFourthStep={validationOfFourthStep}
+      />
       <Step_5 display={count === 5 ? "flex" : "hidden"} />
       <div className="w-full flex f-center gap-4 my-4 tablet:my-2 ">
         <StepperBackBtn

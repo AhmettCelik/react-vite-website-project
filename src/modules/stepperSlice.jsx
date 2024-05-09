@@ -7,11 +7,16 @@ const initialState = {
     selectedBrand: "",
     selectedModel: "",
     selectedCarYear: "",
+    transportType: "",
+    condition: "",
+    email: "",
+    shippingDate: "",
   },
 
   stepperStyleClasses: {
     styleOfFirstSelectOfThirdStep: "pointer-events-none opacity-40",
     styleOfSecondSelectOfThirdStep: "pointer-events-none opacity-40",
+    styleOfCustomDateOfFifthStep: "pointer-events-none opacity-40",
   },
 };
 
@@ -52,6 +57,26 @@ export const stepperSlice = createSlice({
           "pointer-events-none opacity-40";
       } else state.stepperStyleClasses.styleOfSecondSelectOfThirdStep = "";
     },
+
+    handleFirstBtnOfSecondStepClick: (state, action) => {
+      state.formValues.transportType = action.payload;
+      console.log(state.formValues.transportType);
+    },
+
+    handleButtonsOfFourthStep: (state, action) => {
+      state.formValues.condition = action.payload;
+      console.log("condition: " + state.formValues.condition);
+    },
+
+    assignShipmentDate: (state, action) => {
+      state.formValues.shippingDate = action.payload;
+      console.log(state.formValues.shippingDate);
+      if (state.formValues.shippingDate === "Custom") {
+        state.stepperStyleClasses.styleOfCustomDateOfFifthStep = "";
+      } else
+        state.stepperStyleClasses.styleOfCustomDateOfFifthStep =
+          "pointer-events-none opacity-40";
+    },
   },
 });
 
@@ -63,5 +88,8 @@ export const {
   handleSelectedCarYearValue,
   manageFirstSelectElementOfThirdStepStyle,
   manageSecondSelectElementOfThirdStepStyle,
+  handleFirstBtnOfSecondStepClick,
+  handleButtonsOfFourthStep,
+  assignShipmentDate,
 } = stepperSlice.actions;
 export default stepperSlice.reducer;

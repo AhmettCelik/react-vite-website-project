@@ -12,6 +12,9 @@ const initialState = {
     email: "",
     shippingDate: "",
     date: "",
+    emailValidation: false,
+    shipmentTypeValidation: false,
+    dateValidation: true,
   },
 
   stepperStyleClasses: {
@@ -72,6 +75,7 @@ export const stepperSlice = createSlice({
       state.formValues.shippingDate = action.payload;
       console.log(state.formValues.shippingDate);
       if (state.formValues.shippingDate === "Custom") {
+        state.formValues.dateValidation = false;
         state.stepperStyleClasses.styleOfCustomDateOfFifthStep = "";
       } else
         state.stepperStyleClasses.styleOfCustomDateOfFifthStep =
@@ -80,11 +84,30 @@ export const stepperSlice = createSlice({
 
     handleDateChange: (state, action) => {
       state.formValues.date = action.payload;
+      console.log(state.formValues.date);
+
+      if (state.formValues.date === "") {
+        state.formValues.dateValidation = false;
+      } else state.formValues.dateValidation = true;
+      console.log("önemli " + state.formValues.dateValidation);
     },
 
     handleEmailChange: (state, action) => {
       state.formValues.email = action.payload;
-      console.log(state.formValues.email);
+
+      if (
+        !state.formValues.email.includes("@gmail.com") ||
+        state.formValues.email === ""
+      ) {
+        state.formValues.emailValidation = false;
+      } else state.formValues.emailValidation = true;
+
+      console.log("emailvalid " + state.formValues.emailValidation);
+    },
+
+    setShipmentTypeValidation: (state, action) => {
+      state.formValues.shipmentTypeValidation = action.payload;
+      console.log("Shipment: " + state.formValues.shipmentTypeValidation);
     },
   },
 });
@@ -102,5 +125,6 @@ export const {
   assignShipmentDate,
   handleDateChange,
   handleEmailChange,
+  setShipmentTypeValidation,
 } = stepperSlice.actions;
 export default stepperSlice.reducer;

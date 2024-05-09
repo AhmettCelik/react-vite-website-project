@@ -17,7 +17,9 @@ import {
   assignShipmentDate,
   handleDateChange,
   handleEmailChange,
+  setShipmentTypeValidation,
 } from "../modules/stepperSlice";
+import { Link } from "react-router-dom";
 
 const FormElementButtons = ({ content }) => {
   const dispatch = useDispatch();
@@ -109,14 +111,27 @@ const StepperContinueBtn = ({
   onClickFunctionProp,
   count,
 }) => {
+  const stepperState = useSelector((store) => store.stepper);
   const [contentContinue, setContentContinue] = useState("Continue");
   const [contentGetQuote, setContentGetQuote] = useState("Get your quote");
+  let validation =
+    stepperState.formValues.emailValidation &&
+    stepperState.formValues.shipmentTypeValidation &&
+    stepperState.formValues.dateValidation;
   return (
     <button
       onClick={onClickFunctionProp}
       className={`bg-green-500 hover:bg-green-400 ${widthOfContinue} h-10 rounded-lg text-white font-normal`}
     >
-      {count === 5 ? contentGetQuote : contentContinue}
+      {count === 5 ? (
+        validation ? (
+          <Link to="/quotepage">{contentGetQuote}</Link>
+        ) : (
+          contentGetQuote
+        )
+      ) : (
+        contentContinue
+      )}
       <FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: "0.5rem" }} />
     </button>
   );
@@ -409,6 +424,13 @@ const Step_5 = ({
   const handleSelectChange = (e) => {
     let selectedOption = e.currentTarget.querySelector("option:checked");
     dispatch(assignShipmentDate(selectedOption.value));
+
+    if (
+      selectedOption.value === "" ||
+      selectedOption.value === "Shipping date"
+    ) {
+      dispatch(setShipmentTypeValidation(false));
+    } else dispatch(setShipmentTypeValidation(true));
   };
 
   const handleDateInputChange = (e) => {
@@ -474,7 +496,8 @@ const Step_5 = ({
 
 const Stepper = () => {
   const stepperState = useSelector((store) => store.stepper);
-  const [count, setCount] = useState(5);
+  const dispatch = useDispatch();
+  const [count, setCount] = useState(1);
   const [validationVisibility, setValidationVisibility] = useState("invisible");
   const [
     validationYearSelectorVisibility,
@@ -590,15 +613,21 @@ const Stepper = () => {
         setValidationOfShipmentDate("hidden");
         if (stepperState.formValues.date === "") {
           setValidationOfDateInput("block");
-        } else setValidationOfDateInput("hidden");
-      } else setValidationOfShipmentDate("hidden");
+        } else {
+          setValidationOfDateInput("hidden");
+        }
+      } else {
+        setValidationOfShipmentDate("hidden");
+      }
 
       if (
         !stepperState.formValues.email.includes("@gmail.com") ||
         stepperState.formValues.email === ""
       ) {
         setValidationOfEmail("block");
-      } else setValidationOfEmail("hidden");
+      } else {
+        setValidationOfEmail("hidden");
+      }
     }
   };
 

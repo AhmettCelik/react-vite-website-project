@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import Imformation from "../components/Imformation";
+import { Link } from "react-router-dom";
 
 const PriceLiTags = ({ content }) => {
   return (
@@ -95,7 +96,7 @@ const QuotePage = () => {
                 </button>
               </div>
               <button className="text-white bg-green-400 px-3 py-2 rounded-lg font-normal w-5/12 tablet:w-full">
-                Continue to booking details
+                <Link to="/payment">Continu to booking details</Link>
               </button>
             </div>
           </section>

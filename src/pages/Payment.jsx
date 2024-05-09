@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const PaymentImformationSection = () => {
+  const informations = useSelector((store) => store.stepper.formValues);
   return (
     <div className="w-[40%] rounded-xl h-[22rem] bg-white ">
       <div className="flex flex-col justify-center items-center h-full w-full">
@@ -18,11 +20,11 @@ const PaymentImformationSection = () => {
           </div>
           <div className="opacity-55 flex flex-col gap-2 w-48 text-lg">
             <p>mesafe</p>
-            <p>zaman</p>
-            <p>Nereden</p>
-            <p>Nereye</p>
-            <p>araç durumu</p>
-            <p>araç tipi</p>
+            <p>{informations.shippingDate}</p>
+            <p>{informations.fromCity}</p>
+            <p>{informations.toCity}</p>
+            <p>{informations.condition}</p>
+            <p>{informations.transportType}</p>
             <p>fiyat değeri</p>
           </div>
         </div>
